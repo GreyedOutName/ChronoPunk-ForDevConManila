@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7p4wvthpujqt"]
+
+[ext_resource type="Script" uid="uid://csns72yt0bu78" path="res://Scenes/path_controller.gd" id="1_52fb6"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_2ia5b"]
+
+[node name="MainScene" type="Node2D"]
+
+[node name="point" type="Node2D" parent="." groups=["PathNodes"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="point"]
+scale = Vector2(6.255, 6.255)
+texture = SubResource("CanvasTexture_2ia5b")
+
+[node name="point2" type="Node2D" parent="." groups=["PathNodes"]]
+position = Vector2(37, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="point2"]
+scale = Vector2(6.255, 6.255)
+texture = SubResource("CanvasTexture_2ia5b")
+
+[node name="point3" type="Node2D" parent="." groups=["PathNodes"]]
+position = Vector2(0, 38)
+
+[node name="Sprite2D" type="Sprite2D" parent="point3"]
+scale = Vector2(6.255, 6.255)
+texture = SubResource("CanvasTexture_2ia5b")
+
+[node name="point4" type="Node2D" parent="." groups=["PathNodes"]]
+position = Vector2(70, 60)
+
+[node name="Sprite2D" type="Sprite2D" parent="point4"]
+scale = Vector2(6.255, 6.255)
+texture = SubResource("CanvasTexture_2ia5b")
+
+[node name="PathController" type="Node2D" parent="."]
+script = ExtResource("1_52fb6")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
