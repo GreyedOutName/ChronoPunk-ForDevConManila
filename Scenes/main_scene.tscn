@@ -36,9 +36,3 @@ position = Vector2(-19, 39)
 
 [node name="point4" parent="pointArray" instance=ExtResource("2_6l7je")]
 position = Vector2(50, 22)
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
