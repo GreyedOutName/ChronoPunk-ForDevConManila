@@ -4,15 +4,23 @@ var speed = 120;
 var click_position;
 var target_position = null;
 var allowMove = false;
-var Astar;
+var Astar:AStar2D;
 
 func _ready():
 	Astar = get_tree().root.get_node("MainScene/PathController").getAstar()
 	
-func movePlayer(roughTargetPosition):
+func movePlayer(roughTargetPosition:Vector2):
 	#next_point and current_point gives values equal to a point index in the Astar Object
 	var next_point = Astar.get_closest_point(roughTargetPosition)
 	var current_point = Astar.get_closest_point(global_position)
+	
+	#check if mouse input is actually close to point
+	var next_point_position = Astar.get_point_position(next_point)
+	var maxDistance = 10; #in pixels
+	if roughTargetPosition.distance_to(next_point_position) > maxDistance:
+		#this means that input is invalid
+		return
+	
 	if next_point!=current_point:
 		var path = Astar.get_point_path(current_point,next_point)
 		target_position = path[1]
@@ -38,5 +46,9 @@ func _physics_process(_delta):
 		
 	move_and_slide()
 		
-func _on_button_button_down():
+func _on_talk_button_button_down():
+	GlobalSignals.open_dialogue.emit()
+
+func _on_move_button_button_down():
+	GlobalSignals.player_choosing_move.emit()
 	allowMove = !allowMove # This is from the move button

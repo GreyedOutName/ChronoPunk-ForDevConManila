@@ -63,12 +63,14 @@ size_flags_vertical = 0
 theme = SubResource("Theme_eqqp1")
 text = "Move"
 
-[node name="MoveButton2" type="Button" parent="Control/MarginContainer/HBoxContainer"]
+[node name="TalkButton" type="Button" parent="Control/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = SubResource("Theme_eqqp1")
-text = "Action"
+text = "Talk"
 
+[connection signal="button_down" from="Control/MarginContainer/HBoxContainer/MoveButton" to="." method="_on_move_button_button_down"]
 [connection signal="button_down" from="Control/MarginContainer/HBoxContainer/MoveButton" to="." method="_on_button_button_down"]
-[connection signal="button_down" from="Control/MarginContainer/HBoxContainer/MoveButton2" to="." method="_on_button_button_down"]
+[connection signal="button_down" from="Control/MarginContainer/HBoxContainer/TalkButton" to="." method="_on_talk_button_button_down"]
+[connection signal="button_down" from="Control/MarginContainer/HBoxContainer/TalkButton" to="." method="_on_button_button_down"]

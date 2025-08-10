@@ -6,7 +6,7 @@ var target_position = null;
 var allowMove = false;
 var Astar:AStar2D;
 var currentPathIndex = 0;
-var PathArray:Array;
+@export var PathArray:Array;
 
 func _ready():
 	Astar = get_tree().root.get_node("MainScene/PathController").getAstar()
