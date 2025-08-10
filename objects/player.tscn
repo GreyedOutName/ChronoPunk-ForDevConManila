@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmvmi1eqfgt6a"]
+[gd_scene load_steps=5 format=3 uid="uid://cmvmi1eqfgt6a"]
 
 [ext_resource type="Script" uid="uid://d3fex2qvfes6h" path="res://Scripts/player.gd" id="1_eqqp1"]
 
@@ -6,6 +6,8 @@
 size = Vector2(11, 17)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_jv6wh"]
+
+[sub_resource type="Theme" id="Theme_eqqp1"]
 
 [node name="Player" type="CharacterBody2D"]
 visibility_layer = 512
@@ -25,3 +27,48 @@ texture = SubResource("CanvasTexture_jv6wh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_6l7je")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -26.0
+offset_top = -21.0
+offset_right = 142.0
+offset_bottom = 111.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.31, 0.31)
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="MoveButton" type="Button" parent="Control/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_eqqp1")
+text = "Move"
+
+[node name="MoveButton2" type="Button" parent="Control/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_eqqp1")
+text = "Action"
+
+[connection signal="button_down" from="Control/MarginContainer/HBoxContainer/MoveButton" to="." method="_on_button_button_down"]
+[connection signal="button_down" from="Control/MarginContainer/HBoxContainer/MoveButton2" to="." method="_on_button_button_down"]
