@@ -7,7 +7,7 @@ size = Vector2(11, 17)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_jv6wh"]
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["npc"]]
 visibility_layer = 512
 script = ExtResource("1_882u1")
 

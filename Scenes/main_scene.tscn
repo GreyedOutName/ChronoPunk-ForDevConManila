@@ -20,6 +20,9 @@ position = Vector2(-29, -18)
 
 [node name="Enemy" parent="." instance=ExtResource("5_huasi")]
 position = Vector2(50, 21)
+PathArray = Array[int]([4, 3, 2, 0, 1])
+dialogue = "\"Hey There\""
+npc_name = "\"Guard 1\""
 
 [node name="pointArray" type="Node" parent="."]
 
@@ -30,7 +33,7 @@ position = Vector2(-29, -18)
 position = Vector2(-28, 5)
 
 [node name="point2" parent="pointArray" instance=ExtResource("2_6l7je")]
-position = Vector2(14, 16)
+position = Vector2(21, -12)
 
 [node name="point3" parent="pointArray" instance=ExtResource("2_6l7je")]
 position = Vector2(-19, 39)

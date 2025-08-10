@@ -9,9 +9,11 @@ size = Vector2(11, 17)
 
 [sub_resource type="Theme" id="Theme_eqqp1"]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("MoveButton", "TalkButton")]
 visibility_layer = 512
 script = ExtResource("1_eqqp1")
+MoveButton = NodePath("Control/MarginContainer/VBoxContainer/HBoxContainer/MoveButton")
+TalkButton = NodePath("Control/MarginContainer/VBoxContainer/HBoxContainer/TalkButton")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -53,24 +55,32 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
 layout_mode = 2
 
-[node name="MoveButton" type="Button" parent="Control/MarginContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MoveButton" type="Button" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = SubResource("Theme_eqqp1")
 text = "Move"
 
-[node name="TalkButton" type="Button" parent="Control/MarginContainer/HBoxContainer"]
+[node name="WaitButton" type="Button" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Wait"
+
+[node name="TalkButton" type="Button" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = SubResource("Theme_eqqp1")
 text = "Talk"
 
-[connection signal="button_down" from="Control/MarginContainer/HBoxContainer/MoveButton" to="." method="_on_move_button_button_down"]
-[connection signal="button_down" from="Control/MarginContainer/HBoxContainer/MoveButton" to="." method="_on_button_button_down"]
-[connection signal="button_down" from="Control/MarginContainer/HBoxContainer/TalkButton" to="." method="_on_talk_button_button_down"]
-[connection signal="button_down" from="Control/MarginContainer/HBoxContainer/TalkButton" to="." method="_on_button_button_down"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="button_down" from="Control/MarginContainer/VBoxContainer/HBoxContainer/MoveButton" to="." method="_on_move_button_button_down"]
+[connection signal="button_down" from="Control/MarginContainer/VBoxContainer/HBoxContainer/WaitButton" to="." method="_on_wait_button_button_down"]
+[connection signal="button_down" from="Control/MarginContainer/VBoxContainer/HBoxContainer/TalkButton" to="." method="_on_talk_button_button_down"]

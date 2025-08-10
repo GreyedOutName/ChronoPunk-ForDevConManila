@@ -2,6 +2,8 @@ extends CanvasLayer
 
 @export var turnIndicator:Label;
 @export var dialogueBox:MarginContainer;
+@export var dialogueText:Label;
+@export var dialogueLabel:Label;
 @export var reminderText:Label;
 
 func _ready():
@@ -10,7 +12,9 @@ func _ready():
 	GlobalSignals.new_turn.connect(_new_turn)
 	turnIndicator.text = ("Turn: " + str(TurnController.turn_number)) 
 
-func _open_dialogue():
+func _open_dialogue(Text, Name):
+	dialogueText.text = Text
+	dialogueLabel.text = Name
 	dialogueBox.visible = true;
 
 func _player_choosing_move():

@@ -3,10 +3,12 @@
 [ext_resource type="Script" uid="uid://ciwpwsa54mgfi" path="res://Scripts/GUI_Script.gd" id="1_bpa6r"]
 [ext_resource type="Texture2D" uid="uid://dwjd0343rl1ey" path="res://Assets/UI_Assets/windowUI.png" id="2_ptolr"]
 
-[node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("turnIndicator", "dialogueBox", "reminderText")]
+[node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("turnIndicator", "dialogueBox", "dialogueText", "dialogueLabel", "reminderText")]
 script = ExtResource("1_bpa6r")
 turnIndicator = NodePath("TopLeftBoxes/NinePatchRect/TurnNumberLabel")
 dialogueBox = NodePath("DialogueBox")
+dialogueText = NodePath("DialogueBox/VBoxContainer/NinePatchRect2/DialogueText")
+dialogueLabel = NodePath("DialogueBox/VBoxContainer/NinePatchRect/DialogueLabel")
 reminderText = NodePath("ReminderText")
 
 [node name="TopLeftBoxes" type="MarginContainer" parent="."]
@@ -70,7 +72,7 @@ patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="Label" type="Label" parent="DialogueBox/VBoxContainer/NinePatchRect"]
+[node name="DialogueLabel" type="Label" parent="DialogueBox/VBoxContainer/NinePatchRect"]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 12.0
@@ -89,7 +91,7 @@ patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="Label" type="Label" parent="DialogueBox/VBoxContainer/NinePatchRect2"]
+[node name="DialogueText" type="Label" parent="DialogueBox/VBoxContainer/NinePatchRect2"]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 12.0

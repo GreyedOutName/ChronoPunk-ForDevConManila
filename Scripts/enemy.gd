@@ -6,14 +6,14 @@ var target_position = null;
 var allowMove = false;
 var Astar:AStar2D;
 var currentPathIndex = 0;
-@export var PathArray:Array;
+@export var PathArray:Array[int] = [];
+@export var dialogue:String = "";
+@export var npc_name:String = "";
 
 func _ready():
 	Astar = get_tree().root.get_node("MainScene/PathController").getAstar()
 	GlobalSignals.new_turn.connect(_on_new_turn)
 	
-	PathArray = [4,3,2,0,1]
-
 func _physics_process(_delta):	
 	if target_position != null:
 		var distance = global_position.distance_to(target_position);
