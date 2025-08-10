@@ -10,6 +10,7 @@ func _ready():
 	Astar = get_tree().root.get_node("MainScene/PathController").getAstar()
 	
 func movePlayer(roughTargetPosition):
+	TurnController.turn_number += 1
 	#next_point and current_point gives values equal to a point index in the Astar Object
 	var next_point = Astar.get_closest_point(roughTargetPosition)
 	var current_point = Astar.get_closest_point(global_position)

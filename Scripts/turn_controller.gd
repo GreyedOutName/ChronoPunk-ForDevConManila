@@ -1,3 +1,3 @@
 extends Node2D
 
-@export var turnLabel:Label; 
+var turn_number = 1;
