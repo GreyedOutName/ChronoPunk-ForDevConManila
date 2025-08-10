@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://w5fhv5wx7ee8"]
+
+[ext_resource type="Script" uid="uid://gdunlryxbesp" path="res://Scripts/camera_controller.gd" id="1_ttuqj"]
+
+[node name="CameraContainer" type="Node2D"]
+script = ExtResource("1_ttuqj")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+limit_left = -1000
+limit_top = -1000
+limit_right = 1000
+limit_bottom = 1000

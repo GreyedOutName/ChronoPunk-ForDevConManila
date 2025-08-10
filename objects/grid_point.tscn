@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bd5yeg2sylr80"]
+[gd_scene load_steps=5 format=3 uid="uid://bd5yeg2sylr80"]
 
 [ext_resource type="Script" uid="uid://bbbdkyco7jjp5" path="res://Scripts/point.gd" id="1_co3ql"]
 
@@ -7,6 +7,9 @@
 [sub_resource type="LabelSettings" id="LabelSettings_dqtvb"]
 font_size = 20
 font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a2n3f"]
+size = Vector2(16, 16)
 
 [node name="point" type="Node2D" node_paths=PackedStringArray("num_indicator") groups=["PathNodes"]]
 script = ExtResource("1_co3ql")
@@ -25,3 +28,8 @@ offset_bottom = 0.16
 scale = Vector2(0.275, 0.275)
 text = "1"
 label_settings = SubResource("LabelSettings_dqtvb")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_a2n3f")

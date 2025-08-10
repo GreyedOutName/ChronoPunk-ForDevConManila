@@ -6,7 +6,6 @@ var target_position = null;
 var allowMove = false;
 var Astar;
 
-
 func _ready():
 	Astar = get_tree().root.get_node("MainScene/PathController").getAstar()
 	
@@ -18,6 +17,7 @@ func movePlayer(roughTargetPosition):
 		var path = Astar.get_point_path(current_point,next_point)
 		target_position = path[1]
 		TurnController.turn_number += 1
+		GlobalSignals.new_turn.emit()
 		allowMove = !allowMove
 
 func _physics_process(_delta):
