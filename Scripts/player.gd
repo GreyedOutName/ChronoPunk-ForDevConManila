@@ -34,7 +34,6 @@ func movePlayer(roughTargetPosition:Vector2):
 	if next_point!=current_point:
 		var path = Astar.get_point_path(current_point,next_point)
 		target_position = path[1]
-		TurnController.turn_number += 1
 		GlobalSignals.new_turn.emit()
 		allowMove = !allowMove
 
@@ -64,6 +63,13 @@ func _on_area_2d_area_entered(area:Area2D):
 		dialogueText = whatsInThisNode.dialogue;
 		dialogueLabel = whatsInThisNode.npc_name;
 		TalkButton.visible = true
+		
+func _on_area_2d_area_exited(area):
+	var whatsInThisNode = area.get_parent()
+	if whatsInThisNode.is_in_group("npc"):
+		dialogueText = whatsInThisNode.dialogue;
+		dialogueLabel = whatsInThisNode.npc_name;
+		TalkButton.visible = false # Replace with function body.	
 	
 func _on_talk_button_button_down():
 	GlobalSignals.open_dialogue.emit(dialogueText,dialogueLabel)
@@ -76,4 +82,4 @@ func _on_wait_button_button_down():
 	GlobalSignals.new_turn.emit()
 	
 func _new_turn():
-	TalkButton.visible = false
+	pass
