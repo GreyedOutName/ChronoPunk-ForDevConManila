@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://6qjmwa5iamrs"]
 
 [node name="Objectives" type="RichTextLabel"]
-custom_minimum_size = Vector2(110, 800)
+custom_minimum_size = Vector2(110, 600)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
