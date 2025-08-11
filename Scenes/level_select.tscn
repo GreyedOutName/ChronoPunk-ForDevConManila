@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://cp15g6vhih8p"]
+
+[ext_resource type="Script" uid="uid://ckbiaybkeb5d1" path="res://Scripts/main_menu.gd" id="1_1fiak"]
+
+[node name="LevelSelect" type="Node2D"]
+script = ExtResource("1_1fiak")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Level Title" type="Label" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Level 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Select" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 50
+text = "Select"
+
+[connection signal="button_down" from="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/Select" to="." method="_on_play_button_button_down"]

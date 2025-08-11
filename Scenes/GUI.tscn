@@ -3,7 +3,9 @@
 [ext_resource type="Script" uid="uid://ciwpwsa54mgfi" path="res://Scripts/GUI_Script.gd" id="1_bpa6r"]
 [ext_resource type="Texture2D" uid="uid://bn5yi7epchlxh" path="res://Assets/UI_Assets/windowUI2.png" id="2_ptolr"]
 
-[node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("turnIndicator", "dialogueBox", "dialogueChoices", "ChoicesVbox", "dialogueText", "dialogueLabel", "reminderText")]
+[node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("turnIndicator", "dialogueBox", "dialogueChoices", "ChoicesVbox", "dialogueText", "dialogueLabel", "reminderText", "GameObjectives", "Score")]
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
 script = ExtResource("1_bpa6r")
 turnIndicator = NodePath("TopLeftBoxes/NinePatchRect/TurnNumberLabel")
 dialogueBox = NodePath("DialogueBox")
@@ -12,16 +14,21 @@ ChoicesVbox = NodePath("DialogueChoices/ChoicesVBox")
 dialogueText = NodePath("DialogueBox/BaseDialogue/NinePatchRect2/DialogueText")
 dialogueLabel = NodePath("DialogueBox/BaseDialogue/NinePatchRect/DialogueLabel")
 reminderText = NodePath("ReminderText")
+GameObjectives = NodePath("GameObjectives")
+Score = NodePath("TopLeftBoxes/NinePatchRect2/Score")
 
-[node name="TopLeftBoxes" type="MarginContainer" parent="."]
-offset_right = 230.0
-offset_bottom = 130.0
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 30
+[node name="TopLeftBoxes" type="VBoxContainer" parent="."]
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 186.0
+offset_bottom = 114.0
+theme_override_constants/separation = 10
 
 [node name="NinePatchRect" type="NinePatchRect" parent="TopLeftBoxes"]
-custom_minimum_size = Vector2(200, 100)
+custom_minimum_size = Vector2(110, 60)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource("2_ptolr")
 patch_margin_left = 5
 patch_margin_top = 5
@@ -29,16 +36,60 @@ patch_margin_right = 5
 patch_margin_bottom = 5
 
 [node name="TurnNumberLabel" type="Label" parent="TopLeftBoxes/NinePatchRect"]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 12.0
-offset_right = 192.0
-offset_bottom = 86.0
-theme_override_font_sizes/font_size = 54
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.5
+offset_top = -21.0
+offset_right = 54.5
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
 text = "Turn: 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="TopLeftBoxes"]
+custom_minimum_size = Vector2(110, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_ptolr")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Score" type="Label" parent="TopLeftBoxes/NinePatchRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.5
+offset_top = -21.0
+offset_right = 54.5
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "Score: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="GameObjectives" type="VBoxContainer" parent="."]
+offset_left = 18.0
+offset_top = 151.0
+offset_right = 3178.0
+offset_bottom = 9791.0
+scale = Vector2(0.05, 0.05)
 
 [node name="DialogueBox" type="MarginContainer" parent="."]
 visible = false

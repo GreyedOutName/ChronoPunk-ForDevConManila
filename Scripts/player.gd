@@ -21,7 +21,7 @@ var dialogueIndex:int = 0
 
 func _ready():
 	#Get Astar for this level inside PathController
-	Astar = get_tree().root.get_node("MainScene/PathController").getAstar()
+	Astar = $"../PathController".getAstar()
 	#Connect new_turn() signal
 	GlobalSignals.new_turn.connect(_new_turn)
 	GlobalSignals.continue_dialogue.connect(_continue_dialogue)
@@ -43,6 +43,7 @@ func movePlayer(roughTargetPosition:Vector2):
 		var path = Astar.get_point_path(current_point,next_point)
 		target_position = path[1]
 		GlobalSignals.new_turn.emit()
+		GlobalSignals.objective_completed.emit(0,100)
 		allowMove = !allowMove
 
 func _physics_process(_delta):

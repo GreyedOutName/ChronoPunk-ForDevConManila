@@ -11,7 +11,7 @@ var currentPathIndex = 0;
 @export var dialogueResourceRef:dialogue_resource;
 
 func _ready():
-	Astar = get_tree().root.get_node("MainScene/PathController").getAstar()
+	Astar = $"../PathController".getAstar()
 	GlobalSignals.new_turn.connect(_on_new_turn)
 	
 func _physics_process(_delta):	

@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://6qjmwa5iamrs"]
+
+[node name="Objectives" type="RichTextLabel"]
+custom_minimum_size = Vector2(110, 800)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 250
+bbcode_enabled = true
+text = " - End"
+autowrap_mode = 2
+vertical_alignment = 1

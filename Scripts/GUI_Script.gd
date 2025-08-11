@@ -7,8 +7,11 @@ extends CanvasLayer
 @export var dialogueText:Label;
 @export var dialogueLabel:Label;
 @export var reminderText:Label;
+@export var GameObjectives:VBoxContainer;
+@export var Score:Label;
 
 var choiceBox = preload("res://Scenes/GUI_Dialogue_Choice.tscn")
+var objectiveText = preload("res://Scenes/GUI_ObjectiveText.tscn")
 
 func _ready():
 	GlobalSignals.player_choosing_move.connect(_player_choosing_move)
@@ -18,8 +21,18 @@ func _ready():
 	GlobalSignals.exit_dialogue.connect(_exit_dialogue)
 	GlobalSignals.choose_dialogue_response.connect(_choose_dialogue)
 	GlobalSignals.change_dialogue.connect(_change_dialogue)
+	GlobalSignals.objective_completed.connect(_objective_completed)
 	
 	turnIndicator.text = ("Turn: " + str(TurnController.turn_number)) 
+	
+	if get_tree().current_scene.name.contains("Level"):
+		for x in Objectives.levelObjectives[get_tree().current_scene.name]:
+			var newObjective = objectiveText.instantiate()
+			newObjective.text = x
+			GameObjectives.add_child(newObjective)
+
+func _process(delta):
+	Score.text = "Score: "+str(Objectives.score)
 
 func _open_dialogue(Text, Name):
 	dialogueText.text = Text
@@ -53,6 +66,11 @@ func _player_choosing_move():
 func _new_turn():
 	reminderText.visible = false
 	turnIndicator.text = ("Turn: " + str(TurnController.turn_number)) 
-
+	
+func _objective_completed(index:int,score:int):
+	var arrayOfText:Array[Node] = GameObjectives.get_children()
+	var newText = "[color=#FF0000][s]"+arrayOfText[index].text+"[/s][/color]"
+	arrayOfText[index].text = newText
+	
 func _on_invisible_button_button_up():
 	GlobalSignals.continue_dialogue.emit()
