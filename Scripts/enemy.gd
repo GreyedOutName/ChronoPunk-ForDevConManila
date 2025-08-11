@@ -6,9 +6,9 @@ var target_position = null;
 var allowMove = false;
 var Astar:AStar2D;
 var currentPathIndex = 0;
+
 @export var PathArray:Array[int] = [];
-@export var dialogue:String = "";
-@export var npc_name:String = "";
+@export var dialogueResourceRef:dialogue_resource;
 
 func _ready():
 	Astar = get_tree().root.get_node("MainScene/PathController").getAstar()

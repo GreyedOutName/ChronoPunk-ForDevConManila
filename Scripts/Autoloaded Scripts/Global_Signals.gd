@@ -2,4 +2,9 @@ extends Node
 
 signal new_turn()
 signal player_choosing_move()
+
 signal open_dialogue(dialogueText:String, characterName:String)
+signal continue_dialogue()
+signal choose_dialogue_response(choices:Dictionary)
+signal exit_dialogue()
+signal change_dialogue(dialogueKey:String)
