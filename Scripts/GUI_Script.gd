@@ -56,7 +56,7 @@ func _choose_dialogue(choices:Dictionary):
 func _change_dialogue(key):
 	for x in ChoicesVbox.get_children():
 		x.queue_free()
-	ChoicesVbox.visible = false;
+	
 	dialogueChoices.visible = false;
 
 func _player_choosing_move():

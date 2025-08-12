@@ -26,6 +26,7 @@ func _ready():
 	GlobalSignals.new_turn.connect(_new_turn)
 	GlobalSignals.continue_dialogue.connect(_continue_dialogue)
 	GlobalSignals.change_dialogue.connect(_change_dialogue)
+	GlobalSignals.exit_dialogue.connect(_exit_dialogue)
 	
 func movePlayer(roughTargetPosition:Vector2):
 	#next_point and current_point gives values equal to a point index in the Astar Object
@@ -113,4 +114,9 @@ func _change_dialogue(key):
 	
 	var text = dialogueText[dialogueKey][dialogueIndex]
 	GlobalSignals.open_dialogue.emit(text,dialogueLabel)
+	
+func _exit_dialogue():
+	dialogueKey = "1st"
+	dialogueIndex = 0
+	ActionsMenu.visible = true
 	

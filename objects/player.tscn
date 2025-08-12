@@ -21,8 +21,8 @@ shape = SubResource("RectangleShape2D_6l7je")
 disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-7.17465e-43, -9)
-scale = Vector2(0.0425782, 0.0417969)
+position = Vector2(-7.17465e-43, -11)
+scale = Vector2(0.05, 0.049)
 texture = ExtResource("2_ykyjo")
 
 [node name="Area2D" type="Area2D" parent="."]

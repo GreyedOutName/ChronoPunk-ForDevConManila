@@ -9,3 +9,5 @@ signal choose_dialogue_response(choices:Dictionary)
 signal exit_dialogue()
 signal change_dialogue(dialogueKey:String)
 signal objective_completed(index:int,score:int)
+
+signal level_failed()
