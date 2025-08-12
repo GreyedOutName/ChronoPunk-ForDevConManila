@@ -43,7 +43,6 @@ func movePlayer(roughTargetPosition:Vector2):
 		var path = Astar.get_point_path(current_point,next_point)
 		target_position = path[1]
 		GlobalSignals.new_turn.emit()
-		GlobalSignals.objective_completed.emit(0,100)
 		allowMove = !allowMove
 
 func _physics_process(_delta):
