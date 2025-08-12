@@ -30,6 +30,7 @@ func addPointsToAstar():
 	
 	# Connect points (example setup)
 	# Set this for each level
+	# TODO (Keoj): Need to compact this to avoid D.R.Y
 	AStar.connect_points(0, 1)
 	drawLine(0,1)
 	AStar.connect_points(0, 2)
@@ -45,4 +46,3 @@ func addPointsToAstar():
 	
 func _ready():
 	addPointsToAstar();
-	drawLine(0,4);
