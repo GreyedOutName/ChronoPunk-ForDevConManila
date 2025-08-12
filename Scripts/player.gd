@@ -8,8 +8,10 @@ var target_position = null;
 var allowMove = false;
 var Astar:AStar2D;
 
-#baseEquipMent stats
-var items_left:Array[int] = [2,0,0]
+#For Equipment
+var items_left:Array[int] = [2,1,1]
+var teleporter = preload("res://objects/teleporter_pointer.tscn")
+var teleporterPointer:Node2D;
 
 #GUI references
 @export var ActionsMenu:Control;
@@ -125,3 +127,20 @@ func _exit_dialogue():
 	dialogueIndex = 0
 	ActionsMenu.visible = true
 	
+
+#for the 3 items
+func _on_distractor_button_button_up():
+	pass # Replace with function body.
+	
+func _on_teleporter_button_button_up():
+	if teleporterPointer:
+		global_position = teleporterPointer.global_position
+		target_position = teleporterPointer.global_position
+		teleporterPointer.queue_free()
+	else:
+		teleporterPointer = teleporter.instantiate()
+		teleporterPointer.global_position = global_position
+		get_tree().current_scene.add_child(teleporterPointer)
+
+func _on_invis_button_button_up():
+	pass # Replace with function body.

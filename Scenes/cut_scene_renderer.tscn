@@ -1,7 +1,55 @@
-[gd_scene format=3 uid="uid://dkaq0aij50rgt"]
+[gd_scene load_steps=3 format=3 uid="uid://dkaq0aij50rgt"]
 
-[node name="CutSceneRenderer" type="Node2D"]
+[ext_resource type="Script" uid="uid://dkvdoxyxo7trm" path="res://Scripts/cutscene_renderer.gd" id="1_4767y"]
+[ext_resource type="Texture2D" uid="uid://c040i6bjopxw5" path="res://Assets/UI_Assets/frame-1.png.png" id="2_hwqfc"]
+
+[node name="CutSceneRenderer" type="Node2D" node_paths=PackedStringArray("TextLabel")]
+script = ExtResource("1_4767y")
+TextLabel = NodePath("CanvasLayer/RichTextLabel")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer"]
+custom_minimum_size = Vector2(300, 300)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_hwqfc")
+patch_margin_left = 250
+patch_margin_top = 250
+patch_margin_right = 250
+patch_margin_bottom = 250
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 94.0
+offset_top = 122.0
+offset_right = -100.0
+offset_bottom = -154.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "\"There was no one left for you, so you joined the military\""
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InvisibleButton" type="Button" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="button_down" from="CanvasLayer/InvisibleButton" to="." method="_on_invisible_button_button_down"]

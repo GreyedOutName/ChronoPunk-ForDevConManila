@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="cutscene_text" load_steps=2 format=3 uid="uid://2b7q5uson8v8"]
+
+[ext_resource type="Script" uid="uid://b7ljve8dfj2ij" path="res://Scripts/Resources Scripts/cutsceneText.gd" id="1_jq3xb"]
+
+[resource]
+script = ExtResource("1_jq3xb")
+cutscene_text = Array[String](["The year is 2092 and the world is under the AUTHORITY.", "A regime built on order, stability, and sensibility.", "AUTHORITY does not persist under idle hands.", "Under the watch of time keepers such as yourself -", "providing your betters with an iron grip on reality.", "Armed with a short-distance time travel device. An hour of total omniscience.", "You are an arm of AUTHORITY clawing and breaking time into submission.", "And the world goes on...", "Its tired.", "And you feel as if you're older than you really are."])
+metadata/_custom_type_script = "uid://b7ljve8dfj2ij"

@@ -2,7 +2,7 @@ extends Node2D
 
 var move_limit := 150 #value in pixels
 var zoom_min := 2.0
-var zoom_max := 7.0
+var zoom_max := 12.0
 
 func _input(event):
 	if event is InputEventMouseMotion:
