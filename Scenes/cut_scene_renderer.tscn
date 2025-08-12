@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dkaq0aij50rgt"]
+
+[node name="CutSceneRenderer" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]

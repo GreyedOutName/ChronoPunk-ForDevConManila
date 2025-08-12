@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6l7je"]
 size = Vector2(11, 17)
 
-[node name="Enemy" type="CharacterBody2D" groups=["npc"]]
+[node name="Enemy" type="CharacterBody2D" groups=["enemy", "npc"]]
 visibility_layer = 512
 script = ExtResource("1_882u1")
 

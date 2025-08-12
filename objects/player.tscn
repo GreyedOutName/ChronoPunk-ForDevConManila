@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmvmi1eqfgt6a"]
+[gd_scene load_steps=7 format=3 uid="uid://cmvmi1eqfgt6a"]
 
 [ext_resource type="Script" uid="uid://d3fex2qvfes6h" path="res://Scripts/player.gd" id="1_eqqp1"]
 [ext_resource type="Texture2D" uid="uid://cvxg5usridwdl" path="res://Assets/characters/2DMaxIDLE-1.png.png" id="2_ykyjo"]
+[ext_resource type="Texture2D" uid="uid://dwjd0343rl1ey" path="res://Assets/UI_Assets/windowUI.png" id="3_uxov2"]
+[ext_resource type="Script" uid="uid://ho6m2bl8vh4b" path="res://Scripts/number_label.gd" id="4_nmc1l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6l7je"]
 size = Vector2(11, 17)
@@ -31,10 +33,14 @@ texture = ExtResource("2_ykyjo")
 shape = SubResource("RectangleShape2D_6l7je")
 
 [node name="Control" type="Control" parent="."]
+light_mask = 0
+visibility_layer = 512
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -8.0
+offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -46,7 +52,7 @@ anchor_bottom = 1.0
 offset_left = -26.0
 offset_top = -33.0
 offset_right = 142.0
-offset_bottom = 99.0
+offset_bottom = 173.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.31, 0.31)
@@ -57,28 +63,145 @@ theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 110
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 4
 
 [node name="MoveButton" type="Button" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 30)
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme = SubResource("Theme_eqqp1")
-text = "Move"
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/MoveButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.53
+offset_top = 4.045
+offset_right = 125.53
+offset_bottom = 57.045
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+theme_override_font_sizes/font_size = 60
+text = "MOVE"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="WaitButton" type="Button" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 30)
 layout_mode = 2
-text = "Wait"
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/WaitButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.53
+offset_top = 4.045
+offset_right = 125.53
+offset_bottom = 57.045
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+theme_override_font_sizes/font_size = 60
+text = "WAIT"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TalkButton" type="Button" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
 visible = false
+custom_minimum_size = Vector2(50, 30)
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme = SubResource("Theme_eqqp1")
-text = "Talk"
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/TalkButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.53
+offset_top = 4.045
+offset_right = 125.53
+offset_bottom = 57.045
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+theme_override_font_sizes/font_size = 60
+text = "TALK"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Inventory" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="DistractorButton" type="NinePatchRect" parent="Control/MarginContainer/VBoxContainer/Inventory"]
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_uxov2")
+
+[node name="numberLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/Inventory/DistractorButton" node_paths=PackedStringArray("Player")]
+layout_mode = 0
+offset_left = 31.9355
+offset_top = 26.4194
+offset_right = 71.9355
+offset_bottom = 81.4194
+scale = Vector2(0.3, 0.3)
+theme_override_font_sizes/font_size = 40
+text = "0"
+script = ExtResource("4_nmc1l")
+Player = NodePath("../../../../../..")
+
+[node name="TeleporterButton" type="NinePatchRect" parent="Control/MarginContainer/VBoxContainer/Inventory"]
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_uxov2")
+
+[node name="numberLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/Inventory/TeleporterButton" node_paths=PackedStringArray("Player")]
+offset_left = 31.9355
+offset_top = 26.4194
+offset_right = 71.9355
+offset_bottom = 81.4194
+scale = Vector2(0.3, 0.3)
+theme_override_font_sizes/font_size = 40
+text = "0"
+script = ExtResource("4_nmc1l")
+Player = NodePath("../../../../../..")
+MyItemIndex = 1
+
+[node name="InvisibilityButton" type="NinePatchRect" parent="Control/MarginContainer/VBoxContainer/Inventory"]
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_uxov2")
+
+[node name="numberLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/Inventory/InvisibilityButton" node_paths=PackedStringArray("Player")]
+offset_left = 31.9355
+offset_top = 26.4194
+offset_right = 71.9355
+offset_bottom = 81.4194
+scale = Vector2(0.3, 0.3)
+theme_override_font_sizes/font_size = 40
+text = "0"
+script = ExtResource("4_nmc1l")
+Player = NodePath("../../../../../..")
+MyItemIndex = 2
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

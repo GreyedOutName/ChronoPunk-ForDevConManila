@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 #player movement stats
 var speed = 120;
@@ -6,6 +7,9 @@ var click_position;
 var target_position = null;
 var allowMove = false;
 var Astar:AStar2D;
+
+#baseEquipMent stats
+var items_left:Array[int] = [2,0,0]
 
 #GUI references
 @export var ActionsMenu:Control;
@@ -21,7 +25,8 @@ var dialogueIndex:int = 0
 
 func _ready():
 	#Get Astar for this level inside PathController
-	Astar = $"../PathController".getAstar()
+	if $"../PathController":
+		Astar = $"../PathController".getAstar()
 	#Connect new_turn() signal
 	GlobalSignals.new_turn.connect(_new_turn)
 	GlobalSignals.continue_dialogue.connect(_continue_dialogue)
@@ -68,7 +73,7 @@ func _physics_process(_delta):
 #All of the event driven code
 func _on_area_2d_area_entered(area:Area2D):
 	var whatsInThisNode = area.get_parent()
-	if whatsInThisNode.is_in_group("npc"):
+	if whatsInThisNode.is_in_group("talkable_npc"):
 		dialogueText = whatsInThisNode.dialogueResourceRef.dialogueText;
 		dialogueLabel = whatsInThisNode.dialogueResourceRef.dialogueLabel;
 		TalkButton.visible = true

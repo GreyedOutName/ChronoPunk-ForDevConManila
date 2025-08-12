@@ -29,6 +29,13 @@ window/size/mode=2
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
+[global_group]
+
+enemy=""
+PathNodes=""
+talkable_npc=""
+npc=""
+
 [input]
 
 leftclick={
