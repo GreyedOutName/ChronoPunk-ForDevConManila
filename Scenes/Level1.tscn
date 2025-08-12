@@ -42,4 +42,3 @@ position = Vector2(-19, 39)
 position = Vector2(50, 22)
 
 [node name="CanvasLayer" parent="." instance=ExtResource("7_6jj8j")]
-visible = false

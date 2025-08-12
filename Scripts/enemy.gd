@@ -58,3 +58,13 @@ func distracted(position:Vector2):
 	isDistracted = true
 	target_position = position
 		
+
+func _on_vision_cone_area_entered(area: Area2D) -> void:
+	if area.name == "Player":
+		print("player get")
+		modulate = Color(0,0,0)
+
+func _on_vision_cone_area_exited(area: Area2D) -> void:
+	if area.name == "Player":
+		print("player out")
+		modulate = Color(255,255,255)

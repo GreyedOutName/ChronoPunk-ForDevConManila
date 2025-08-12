@@ -1,14 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://mwss4orfwysh"]
+[gd_scene load_steps=4 format=3 uid="uid://mwss4orfwysh"]
 
 [ext_resource type="Script" uid="uid://co87obe2aipqd" path="res://Scripts/enemy.gd" id="1_882u1"]
-[ext_resource type="Script" uid="uid://bkt1w6alu04uy" path="res://objects/vision_cone.gd" id="2_7jlpp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6l7je"]
 size = Vector2(11, 17)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_jv6wh"]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_882u1"]
 
 [node name="Enemy" type="CharacterBody2D" groups=["npc"]]
 visibility_layer = 512
@@ -29,11 +26,3 @@ texture = SubResource("CanvasTexture_jv6wh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_6l7je")
-
-[node name="VisionCone" type="Area2D" parent="."]
-material = SubResource("CanvasItemMaterial_882u1")
-script = ExtResource("2_7jlpp")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisionCone"]
-position = Vector2(-10, 0)
-polygon = PackedVector2Array(-53, -14, -53, 0, -53, 12, 7, 0)
