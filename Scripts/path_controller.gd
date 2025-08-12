@@ -40,6 +40,7 @@ func _ready():
 func just_in_case():
 	# Connect points (example setup)
 	# Set this for each level
+	# TODO (Keoj): Need to compact this to avoid D.R.Y
 	AStar.connect_points(0, 1)
 	drawLine(0,1)
 	AStar.connect_points(0, 2)
@@ -52,3 +53,4 @@ func just_in_case():
 	drawLine(2,4)
 	AStar.connect_points(3, 4)
 	drawLine(3,4)
+
