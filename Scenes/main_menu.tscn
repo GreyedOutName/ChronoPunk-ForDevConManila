@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://lh3lmqk4m3wy"]
+[gd_scene load_steps=3 format=3 uid="uid://lh3lmqk4m3wy"]
 
 [ext_resource type="Script" uid="uid://ckbiaybkeb5d1" path="res://Scripts/main_menu.gd" id="1_28flt"]
+[ext_resource type="Texture2D" uid="uid://5ykq02y86dbx" path="res://Assets/UI_Assets/ChronoPunk_LOGO.png" id="2_48xlc"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_28flt")
@@ -8,37 +9,30 @@ script = ExtResource("1_28flt")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+offset = Vector2(9.345, 0)
+transform = Transform2D(1, 0, 0, 1, 9.345, 0)
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(537.655, 148)
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("2_48xlc")
+centered = false
+
+[node name="PlayButton" type="Button" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.5
+offset_top = 186.0
+offset_right = 64.5
+offset_bottom = 277.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/margin_left = 40
-theme_override_constants/margin_top = 40
-theme_override_constants/margin_right = 40
-theme_override_constants/margin_bottom = 40
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 90
-text = "ChronoFix"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="PlayButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
-layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 60
 text = "Play"
 
-[connection signal="button_down" from="CanvasLayer/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_button_down"]
+[connection signal="button_down" from="CanvasLayer/PlayButton" to="." method="_on_play_button_button_down"]
