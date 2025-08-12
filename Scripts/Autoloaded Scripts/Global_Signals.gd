@@ -13,3 +13,4 @@ signal objective_completed(index:int,score:int)
 
 signal level_repeat()
 signal level_complete()
+signal level_select(levelnum:int)

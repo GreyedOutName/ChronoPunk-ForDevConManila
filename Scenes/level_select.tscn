@@ -1,9 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://cp15g6vhih8p"]
 
-[ext_resource type="Script" uid="uid://ckbiaybkeb5d1" path="res://Scripts/main_menu.gd" id="1_1fiak"]
+[ext_resource type="Script" uid="uid://bx1w3srjlf7yv" path="res://Scripts/level_select_button.gd" id="2_nkys2"]
 
 [node name="LevelSelect" type="Node2D"]
-script = ExtResource("1_1fiak")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -24,24 +23,29 @@ theme_override_constants/margin_bottom = 40
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_constants/separation = 70
+alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Level Title" type="Label" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "Level 1"
+text = "Level 1:
+Beginning"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Select" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Select" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer" node_paths=PackedStringArray("parentVBox")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 50
 text = "Select"
+script = ExtResource("2_nkys2")
+parentVBox = NodePath("..")
+levelIndex = 1
 
-[connection signal="button_down" from="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/Select" to="." method="_on_play_button_button_down"]
+[connection signal="button_down" from="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/Select" to="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/Select" method="_on_button_down"]

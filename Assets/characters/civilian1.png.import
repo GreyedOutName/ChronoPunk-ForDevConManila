@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://im8q4mghcw5u"
-path="res://.godot/imported/MaxBackorig.png-5a6fcd5551544c1150cf5e113da1b90e.ctex"
+uid="uid://dqq0g5hg6g8nl"
+path="res://.godot/imported/civilian1.png-4aa2e00f37c272b5779c4d8716a8cc72.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/characters/MaxBackorig.png"
-dest_files=["res://.godot/imported/MaxBackorig.png-5a6fcd5551544c1150cf5e113da1b90e.ctex"]
+source_file="res://Assets/characters/civilian1.png"
+dest_files=["res://.godot/imported/civilian1.png-4aa2e00f37c272b5779c4d8716a8cc72.ctex"]
 
 [params]
 

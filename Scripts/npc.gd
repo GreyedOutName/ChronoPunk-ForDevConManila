@@ -29,7 +29,6 @@ func _physics_process(_delta):
 	
 func move():
 	currentPathIndex += loopDirection
-	print(str(TurnController.turn_number)+": "+str(currentPathIndex))
 	if currentPathIndex < PathArray.size()-1 and currentPathIndex > 0:
 		target_position = Astar.get_point_position(PathArray[currentPathIndex])
 	elif currentPathIndex == PathArray.size()-1:

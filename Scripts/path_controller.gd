@@ -53,4 +53,3 @@ func just_in_case():
 	drawLine(2,4)
 	AStar.connect_points(3, 4)
 	drawLine(3,4)
-
