@@ -9,24 +9,23 @@ script = ExtResource("1_28flt")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-offset = Vector2(9.345, 0)
-transform = Transform2D(1, 0, 0, 1, 9.345, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(537.655, 148)
+position = Vector2(551, 148)
 scale = Vector2(0.13, 0.13)
 texture = ExtResource("2_48xlc")
 centered = false
 
 [node name="PlayButton" type="Button" parent="CanvasLayer"]
+z_index = 5
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -64.5
+offset_left = -51.155
 offset_top = 186.0
-offset_right = 64.5
+offset_right = 77.845
 offset_bottom = 277.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -34,5 +33,34 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 60
 text = "Play"
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -700.0
+offset_top = 391.0
+offset_right = 700.0
+offset_bottom = 556.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 40
+text = "A Game By Team 60Secs"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+z_index = -5
+z_as_relative = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.117476, 0.220841, 0.20201, 1)
 
 [connection signal="button_down" from="CanvasLayer/PlayButton" to="." method="_on_play_button_button_down"]

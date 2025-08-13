@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cp15g6vhih8p"]
+[gd_scene load_steps=3 format=3 uid="uid://cp15g6vhih8p"]
 
+[ext_resource type="Script" uid="uid://crfsxflywoqsm" path="res://Scenes/delete_progress.gd" id="2_lx4vd"]
 [ext_resource type="Script" uid="uid://bx1w3srjlf7yv" path="res://Scripts/level_select_button.gd" id="2_nkys2"]
 
 [node name="LevelSelect" type="Node2D"]
@@ -27,10 +28,14 @@ size_flags_vertical = 4
 theme_override_constants/separation = 70
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer"]
+[node name="LevelInfo" type="VBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer" node_paths=PackedStringArray("scoreLabel")]
 layout_mode = 2
+theme_override_constants/separation = 30
+script = ExtResource("2_nkys2")
+levelIndex = 1
+scoreLabel = NodePath("ScoreCounter")
 
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="LevelTitle" type="Label" parent="CanvasLayer/MarginContainer/HBoxContainer/LevelInfo"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Level 1:
@@ -38,14 +43,45 @@ Beginning"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Select" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer" node_paths=PackedStringArray("parentVBox")]
+[node name="Select" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer/LevelInfo"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 50
 text = "Select"
-script = ExtResource("2_nkys2")
-parentVBox = NodePath("..")
-levelIndex = 1
 
-[connection signal="button_down" from="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/Select" to="CanvasLayer/MarginContainer/HBoxContainer/VBoxContainer/Select" method="_on_button_down"]
+[node name="ScoreCounter" type="Label" parent="CanvasLayer/MarginContainer/HBoxContainer/LevelInfo"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Score: 000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer"]
+offset_left = 66.9999
+offset_top = 963.0
+offset_right = 833.0
+offset_bottom = 1108.0
+scale = Vector2(0.425, 0.425)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer2"]
+layout_mode = 2
+
+[node name="Delete Progress" type="Button" parent="CanvasLayer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Delete Progress"
+script = ExtResource("2_lx4vd")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+z_index = -10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.117647, 0.219608, 0.203922, 1)
+
+[connection signal="button_down" from="CanvasLayer/MarginContainer/HBoxContainer/LevelInfo/Select" to="CanvasLayer/MarginContainer/HBoxContainer/LevelInfo" method="_on_select_button_down"]
+[connection signal="button_down" from="CanvasLayer/MarginContainer2/HBoxContainer/Delete Progress" to="CanvasLayer/MarginContainer2/HBoxContainer/Delete Progress" method="_on_button_down"]

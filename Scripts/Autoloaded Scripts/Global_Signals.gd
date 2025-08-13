@@ -12,6 +12,6 @@ signal change_dialogue(dialogueKey:String)
 signal objective_completed(index:int,score:int)
 
 signal level_repeat()
-signal level_complete()
+signal level_complete(levelnum:int)
 signal level_select(levelnum:int)
 signal level_load(levelnum:int)

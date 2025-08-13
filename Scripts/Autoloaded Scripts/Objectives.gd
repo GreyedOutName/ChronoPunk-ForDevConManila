@@ -1,6 +1,6 @@
 extends Node
 
-var score:int = 0;
+var score:int = 0;#code that resets this is in Level_Controller
 
 func _ready():
 	GlobalSignals.objective_completed.connect(_objective_completed)

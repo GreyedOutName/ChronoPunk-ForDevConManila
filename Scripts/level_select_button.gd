@@ -1,7 +1,14 @@
-extends Button
+extends VBoxContainer
 
-@export var parentVBox:VBoxContainer;
 @export var levelIndex:int;
+@export var scoreLabel:Label;
 
-func _on_button_down():
+func _ready():
+	if LevelController.levelScore[levelIndex] == null:
+		visible = false;
+	
+func _process(delta):
+	scoreLabel.text = "Score: "+str(LevelController.levelScore[levelIndex])
+	
+func _on_select_button_down():
 	GlobalSignals.level_select.emit(levelIndex)

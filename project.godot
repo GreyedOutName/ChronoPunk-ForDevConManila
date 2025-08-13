@@ -21,6 +21,7 @@ TurnController="*res://Scripts/Autoloaded Scripts/turn_controller.gd"
 GlobalSignals="*res://Scripts/Autoloaded Scripts/Global_Signals.gd"
 Objectives="*res://Scripts/Autoloaded Scripts/Objectives.gd"
 LevelController="*res://Scripts/Autoloaded Scripts/Level_Controller.gd"
+SaveManager="*res://Scripts/Autoloaded Scripts/save_manager.gd"
 
 [display]
 
