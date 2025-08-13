@@ -8,10 +8,10 @@ dialogueText = Dictionary[String, Array]({
 "1st": ["The Computer beeps to life in front of you", {
 "2nd": "Action: Search For the Files"
 }],
-"2nd": ["*You put your cybersecurity degree to good use*", "Soon enough you found the files.", {
+"2nd": ["*You put your cybersecurity degree to good use*", "Soon enough you found the files.", "Unsurprisingly, its a detailed report on one of AUTHORITY's peacekeeping projects.", "Its damning evidence. They had been deliberately killing people and leaving no trace.", "Except for this.", "Some of your missions are in this file.", {
 "3rd": "Action: Delete them!"
 }],
-"3rd": ["*You breathe a sigh of relief*", "Another perfect mission.", "Everything you will ever do will be perfect.", "That's what they want from everyone.", "Time for extraction."]
+"3rd": ["*You breathe a sigh of relief*", "Another perfect mission.", "Everything you will ever do will be perfect.", "That's what they want from everyone.", "Why can't they understand.", "Time for extraction."]
 })
 dialogueLabel = "Computer"
 metadata/_custom_type_script = "uid://cprybsuenpluj"

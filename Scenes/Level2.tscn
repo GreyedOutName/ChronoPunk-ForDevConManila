@@ -1,20 +1,29 @@
-[gd_scene load_steps=9 format=3 uid="uid://6jaa3vx3qcka"]
+[gd_scene load_steps=18 format=3 uid="uid://6jaa3vx3qcka"]
 
 [ext_resource type="PackedScene" uid="uid://w5fhv5wx7ee8" path="res://objects/camera_container.tscn" id="1_ycmr1"]
 [ext_resource type="PackedScene" uid="uid://dsk0qglenlrlm" path="res://objects/objective_completion_controller.tscn" id="2_2jwna"]
 [ext_resource type="PackedScene" uid="uid://0cq0wjutmxpf" path="res://objects/path_controller.tscn" id="3_sgc6j"]
+[ext_resource type="Script" uid="uid://dpwtpb1kilxe" path="res://Scripts/Level Objective Controllers/Level2_objective_controller.gd" id="3_ycmr1"]
 [ext_resource type="PackedScene" uid="uid://cmvmi1eqfgt6a" path="res://objects/player.tscn" id="4_xx40l"]
 [ext_resource type="Texture2D" uid="uid://ccxhwmnvu67ls" path="res://Assets/level_backgrounds/map2.png" id="8_p4u3k"]
+[ext_resource type="PackedScene" uid="uid://dfvup0jxvyxqy" path="res://objects/talkable_npc2.tscn" id="9_62f1r"]
 [ext_resource type="PackedScene" uid="uid://bd5yeg2sylr80" path="res://objects/grid_point.tscn" id="9_s6bta"]
+[ext_resource type="PackedScene" uid="uid://8l3v46h0oi1l" path="res://objects/enemy_3.tscn" id="10_1je60"]
 [ext_resource type="PackedScene" uid="uid://yexucs5j3i0b" path="res://Scenes/GUI.tscn" id="10_lt7tp"]
+[ext_resource type="Resource" uid="uid://b3ievmlbaxonh" path="res://Resources/Level 2 Dialogue/Level2_benuwe_dialogue.tres" id="11_xx40l"]
+[ext_resource type="PackedScene" uid="uid://k6h23knn2yl0" path="res://objects/enemy_2.tscn" id="11_ycmr1"]
+[ext_resource type="PackedScene" uid="uid://de0yxv1ohxh12" path="res://objects/computer.tscn" id="12_2jwna"]
+[ext_resource type="PackedScene" uid="uid://ckt4x63knidan" path="res://objects/enemy_4.tscn" id="13_1je60"]
 [ext_resource type="PackedScene" uid="uid://bt8mqo110x2f0" path="res://objects/level_complete_area.tscn" id="14_cw30w"]
+[ext_resource type="Resource" uid="uid://bwcsunsjwcqws" path="res://Resources/Level 2 Dialogue/Level2_Computer.tres" id="16_utdxf"]
+[ext_resource type="Resource" uid="uid://dbhjvvlfrwwyk" path="res://Resources/Level 2 Dialogue/Level2_Computer2.tres" id="17_8wk15"]
 
 [node name="Level2" type="Node2D"]
 
 [node name="CameraContainer" parent="." instance=ExtResource("1_ycmr1")]
 
 [node name="ObjectiveCompletionController" parent="." instance=ExtResource("2_2jwna")]
-script = null
+script = ExtResource("3_ycmr1")
 
 [node name="PathController" parent="." instance=ExtResource("3_sgc6j")]
 connections = Array[PackedInt32Array]([PackedInt32Array(0, 1), PackedInt32Array(1, 2), PackedInt32Array(2, 3), PackedInt32Array(2, 4), PackedInt32Array(4, 5), PackedInt32Array(2, 6), PackedInt32Array(6, 8), PackedInt32Array(8, 9), PackedInt32Array(9, 10), PackedInt32Array(10, 11), PackedInt32Array(11, 15), PackedInt32Array(11, 12), PackedInt32Array(12, 13), PackedInt32Array(13, 7), PackedInt32Array(7, 6), PackedInt32Array(14, 6), PackedInt32Array(14, 9), PackedInt32Array(14, 11), PackedInt32Array(14, 13)])
@@ -82,3 +91,27 @@ position = Vector2(3, 120)
 z_index = -10
 scale = Vector2(0.08, 0.08)
 texture = ExtResource("8_p4u3k")
+
+[node name="TalkableNPC" parent="." instance=ExtResource("9_62f1r")]
+position = Vector2(118, -124)
+dialogueResourceRef = ExtResource("11_xx40l")
+
+[node name="Enemy3" parent="." instance=ExtResource("10_1je60")]
+position = Vector2(99, 5)
+PathArray = Array[int]([7, 6, 8, 9])
+
+[node name="enemy2" parent="." instance=ExtResource("11_ycmr1")]
+position = Vector2(3, 57)
+PathArray = Array[int]([11, 12, 13, 14])
+
+[node name="Enemy4" parent="." instance=ExtResource("13_1je60")]
+position = Vector2(69, -113)
+PathArray = Array[int]([4, 2, 1])
+
+[node name="Computer" parent="." instance=ExtResource("12_2jwna")]
+position = Vector2(-77, -50)
+dialogueResourceRef = ExtResource("16_utdxf")
+
+[node name="Computer2" parent="." instance=ExtResource("12_2jwna")]
+position = Vector2(100, 55)
+dialogueResourceRef = ExtResource("17_8wk15")

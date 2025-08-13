@@ -36,6 +36,8 @@ func _ready():
 	GlobalSignals.level_load.connect(_level_load)
 	GlobalSignals.level_select.connect(_level_select)
 	
+	GlobalSignals.progress_deleted.connect(_progress_deleted)
+	
 	var loadFile = SaveManager.load_game_data()
 	print(loadFile)
 	if typeof(loadFile) == TYPE_DICTIONARY and not loadFile.is_empty():
@@ -68,3 +70,12 @@ func _level_load(levelNum:int):
 	print(levelNum)
 	levelCurrentlyIn = levelNum
 	get_tree().change_scene_to_file(levelSceneRef[levelNum])
+	
+func _progress_deleted():
+	levelScore = {
+	1:0,
+	2:null,
+	3:null,
+	4:null,
+	5:null,
+}

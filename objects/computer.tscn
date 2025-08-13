@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://de0yxv1ohxh12"]
 
-[ext_resource type="Script" uid="uid://bh2ilqh441sxv" path="res://Scripts/computer.gd" id="1_glfkg"]
+[ext_resource type="Script" uid="uid://bh2ilqh441sxv" path="res://Scripts/interactable_objects.gd" id="1_glfkg"]
 [ext_resource type="Texture2D" uid="uid://butnllrq5ccin" path="res://Assets/props/Laptop-1.png.png" id="2_q8wpg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1a14g"]

@@ -16,3 +16,5 @@ signal level_repeat()
 signal level_complete(levelnum:int)
 signal level_select(levelnum:int)
 signal level_load(levelnum:int)
+
+signal progress_deleted()
