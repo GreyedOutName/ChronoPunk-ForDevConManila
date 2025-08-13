@@ -9,18 +9,23 @@ func getAstar():
 	return AStar;
 	
 func drawLine(firstPos:int,secondPos:int):
-	# Create and add Line2D node to draw the path
-	line = Line2D.new()
-	add_child(line)
+	var path = AStar.get_point_path(firstPos, secondPos)
+
+	# Outline (black, thicker)
+	var outline = Line2D.new()
+	outline.width = 3
+	outline.default_color = Color.BLACK
+	for pos in path:
+		outline.add_point(pos)
+	add_child(outline)
+
+	# Main line (colored, thinner)
+	var line = Line2D.new()
 	line.width = 1
-	line.default_color = Color(128, 128, 128)
-	
-	# Get path from 0 to 3
-	var path = AStar.get_point_path(firstPos, secondPos)  # returns actual positions, unlike get_id_path
-	
-	# Draw path using Line2D
+	line.default_color = Color(0.5, 0.5, 0.5)  # gray
 	for pos in path:
 		line.add_point(pos)
+	add_child(line)
 
 func addPointsToAstar():
 	# Get all path nodes

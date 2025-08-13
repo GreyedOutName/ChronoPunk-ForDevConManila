@@ -2,11 +2,13 @@ extends CharacterBody2D
 class_name Player
 
 #player movement stats
-var speed = 120;
+var speed = 200;
 var click_position;
 var target_position = null;
 var allowMove = false;
 var placingDistractor = false;
+var isInvisible = false
+var turnsLeftAsInvisible = 1;
 var Astar:AStar2D;
 
 #For Equipment
@@ -19,6 +21,7 @@ var teleporterPointer:Node2D;
 @export var ActionsMenu:Control;
 @export var TeleporterButtonContainer:NinePatchRect;
 @export var TalkButton:Button;
+@export var PlayerSprite:Sprite2D;
 
 #Variables related to Signals
 #Dialogue Related Things
@@ -36,6 +39,47 @@ func _ready():
 	GlobalSignals.continue_dialogue.connect(_continue_dialogue)
 	GlobalSignals.change_dialogue.connect(_change_dialogue)
 	GlobalSignals.exit_dialogue.connect(_exit_dialogue)
+	
+func _new_turn():
+	if isInvisible:
+		turnsLeftAsInvisible -= 1
+		if turnsLeftAsInvisible < 0:
+			isInvisible = false
+			PlayerSprite.modulate.a = 1;
+	else:
+		checkIfThereIsEnemy() #this fixes the bug where you can be immune to enemies
+
+	ActionsMenu.visible = true;
+	
+	
+func _physics_process(_delta):
+	
+	if Input.is_action_just_pressed("leftclick") and allowMove:
+		click_position = get_global_mouse_position()
+		movePlayer(click_position)
+		
+	if Input.is_action_just_pressed("leftclick") and placingDistractor:
+		click_position = get_global_mouse_position()
+		placeDistractor(click_position)
+		
+	if Input.is_action_just_pressed("rightclick") and (allowMove or placingDistractor):
+		allowMove = false
+		placingDistractor = false
+		ActionsMenu.visible = true
+		GlobalSignals.player_choosing_move.emit("Action cancelled")
+		
+	if target_position != null:
+		var distance = global_position.distance_to(target_position);
+		if distance > 4:
+			var direction = (target_position - global_position).normalized()
+			velocity = direction * speed
+		else:
+			global_position = target_position  # snap exactly to point
+			velocity = Vector2.ZERO
+	else:
+		velocity = Vector2.ZERO
+		
+	move_and_slide()
 	
 func movePlayer(roughTargetPosition:Vector2):
 	#next_point and current_point gives values equal to a point index in the Astar Object
@@ -59,7 +103,7 @@ func placeDistractor(roughTargetPosition:Vector2):
 	var closest_point = Astar.get_closest_point(roughTargetPosition)
 	var current_point = Astar.get_closest_point(global_position)
 	
-	if Astar.are_points_connected(closest_point,current_point):
+	if closest_point == current_point or Astar.are_points_connected(closest_point, current_point):
 		#check if mouse input is actually close to point
 		var closest_point_position = Astar.get_point_position(closest_point)
 		var maxDistance = 10; #in pixels
@@ -70,34 +114,27 @@ func placeDistractor(roughTargetPosition:Vector2):
 		newDistractor.global_position = closest_point_position
 		get_tree().current_scene.add_child(newDistractor)
 		GlobalSignals.player_choosing_move.emit("Distractor Placed")
+		items_left[0] -= 1
 		
 		placingDistractor=false
 		ActionsMenu.visible = true;
 	else:
 		GlobalSignals.player_choosing_move.emit("Can only place in adjacent nodes")
 
-func _physics_process(_delta):
+func checkIfThereIsEnemy():
+	var currentPoint = Astar.get_closest_point(global_position)
+	var checkThisPoint = Astar.get_point_position(currentPoint)
+	var space_state = get_world_2d().direct_space_state
+	var query = PhysicsPointQueryParameters2D.new()
+	query.position = checkThisPoint # Replace 'your_point_vector' with the Vector2 of your point
+	query.collide_with_areas = true # Crucially, set this to true to detect areas
+	query.collide_with_bodies = false # Set to false if you only care about areas
+	var result = space_state.intersect_point(query)
 	
-	if Input.is_action_just_pressed("leftclick") and allowMove:
-		click_position = get_global_mouse_position()
-		movePlayer(click_position)
-		
-	if Input.is_action_just_pressed("leftclick") and placingDistractor:
-		click_position = get_global_mouse_position()
-		placeDistractor(click_position)
-		
-	if target_position != null:
-		var distance = global_position.distance_to(target_position);
-		if distance > 4:
-			var direction = (target_position - global_position).normalized()
-			velocity = direction * speed
-		else:
-			global_position = target_position  # snap exactly to point
-			velocity = Vector2.ZERO
-	else:
-		velocity = Vector2.ZERO
-		
-	move_and_slide()
+	for areaHit in result:
+		var whoisthis = areaHit.collider.get_parent()
+		if whoisthis.is_in_group("enemy"):
+			GlobalSignals.level_repeat.emit()
 	
 #All of the event driven code
 func _on_area_2d_area_entered(area:Area2D):
@@ -107,7 +144,8 @@ func _on_area_2d_area_entered(area:Area2D):
 		dialogueLabel = whatsInThisNode.dialogueResourceRef.dialogueLabel;
 		TalkButton.visible = true
 	elif whatsInThisNode.is_in_group("enemy"):
-		GlobalSignals.level_repeat.emit()
+		if !isInvisible:
+			GlobalSignals.level_repeat.emit()
 	elif whatsInThisNode.is_in_group("object"):
 		dialogueText = whatsInThisNode.dialogueResourceRef.dialogueText;
 		dialogueLabel = whatsInThisNode.dialogueResourceRef.dialogueLabel;
@@ -131,9 +169,6 @@ func _on_move_button_button_down():
 func _on_wait_button_button_down():
 	GlobalSignals.new_turn.emit()
 	
-func _new_turn():
-	ActionsMenu.visible = true;
-
 func _continue_dialogue():
 	dialogueIndex+=1
 	if dialogueIndex < dialogueText[dialogueKey].size():
@@ -164,8 +199,6 @@ func _exit_dialogue():
 
 #for the 3 items
 func _on_distractor_button_button_up():
-	items_left[0] -= 1
-	
 	ActionsMenu.visible = false;
 	placingDistractor = true
 	GlobalSignals.player_choosing_move.emit("Click where to place distractor.")
@@ -187,4 +220,7 @@ func _on_teleporter_button_button_up():
 
 func _on_invis_button_button_up():
 	items_left[2] -= 1
-	GlobalSignals.player_choosing_move.emit("Invisible for next turn")
+	isInvisible=true
+	turnsLeftAsInvisible = 1
+	PlayerSprite.modulate.a = 0.5;
+	GlobalSignals.player_choosing_move.emit("Invisible for next 2 turns")

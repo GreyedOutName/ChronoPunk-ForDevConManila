@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name npc
 
-var speed = 120;
+var speed = 250;
 var target_position = null;
 var Astar:AStar2D;
 var currentPathIndex = 0;

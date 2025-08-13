@@ -1,8 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bd5yeg2sylr80"]
 
 [ext_resource type="Script" uid="uid://bbbdkyco7jjp5" path="res://Scripts/point.gd" id="1_co3ql"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_jgdk2"]
+[ext_resource type="Texture2D" uid="uid://i1r05ci05ur0" path="res://Assets/UI_Assets/pathNode.png" id="2_s801s"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dqtvb"]
 font_size = 50
@@ -15,17 +14,24 @@ size = Vector2(16, 16)
 script = ExtResource("1_co3ql")
 num_indicator = NodePath("Label")
 
-[node name="point_sprite" type="Sprite2D" parent="."]
-scale = Vector2(6.255, 6.255)
-texture = SubResource("CanvasTexture_jgdk2")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_s801s")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 visibility_layer = 512
-offset_left = 8.0
-offset_top = -15.0
-offset_right = 37.0
-offset_bottom = 54.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 29.0
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(0.11, 0.11)
+size_flags_horizontal = 4
 text = "1"
 label_settings = SubResource("LabelSettings_dqtvb")
 

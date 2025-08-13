@@ -13,12 +13,13 @@ size = Vector2(11, 11.5)
 
 [sub_resource type="Theme" id="Theme_eqqp1"]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("ActionsMenu", "TeleporterButtonContainer", "TalkButton")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("ActionsMenu", "TeleporterButtonContainer", "TalkButton", "PlayerSprite")]
 visibility_layer = 512
 script = ExtResource("1_eqqp1")
 ActionsMenu = NodePath("Control")
 TeleporterButtonContainer = NodePath("Control/MarginContainer/VBoxContainer/Inventory/TeleporterButton")
 TalkButton = NodePath("Control/MarginContainer/VBoxContainer/HBoxContainer/TalkButton")
+PlayerSprite = NodePath("Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -38,6 +39,7 @@ shape = SubResource("RectangleShape2D_6l7je")
 [node name="Control" type="Control" parent="."]
 light_mask = 0
 visibility_layer = 512
+z_index = 5
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -73,6 +75,7 @@ layout_mode = 2
 size_flags_vertical = 4
 
 [node name="MoveButton" type="Button" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+modulate = Color(0, 0.62, 0.527, 1)
 custom_minimum_size = Vector2(50, 30)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -97,6 +100,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="WaitButton" type="Button" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+modulate = Color(0, 0.619608, 0.52549, 1)
 custom_minimum_size = Vector2(50, 30)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -121,6 +125,7 @@ vertical_alignment = 1
 
 [node name="TalkButton" type="Button" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
 visible = false
+modulate = Color(0, 0.619608, 0.52549, 1)
 custom_minimum_size = Vector2(50, 30)
 layout_mode = 2
 size_flags_horizontal = 4

@@ -1,32 +1,32 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7p4wvthpujqt"]
+[gd_scene load_steps=9 format=3 uid="uid://c7p4wvthpujqt"]
 
 [ext_resource type="PackedScene" uid="uid://w5fhv5wx7ee8" path="res://objects/camera_container.tscn" id="1_ysn8j"]
-[ext_resource type="Script" uid="uid://csns72yt0bu78" path="res://Scripts/path_controller.gd" id="2_6ll4n"]
+[ext_resource type="PackedScene" uid="uid://0cq0wjutmxpf" path="res://objects/path_controller.tscn" id="2_6ll4n"]
 [ext_resource type="PackedScene" uid="uid://cmvmi1eqfgt6a" path="res://objects/player.tscn" id="3_kylad"]
 [ext_resource type="PackedScene" uid="uid://mwss4orfwysh" path="res://objects/enemy.tscn" id="4_bdlbp"]
 [ext_resource type="PackedScene" uid="uid://k6h23knn2yl0" path="res://objects/enemy_2.tscn" id="5_ysn8j"]
 [ext_resource type="PackedScene" uid="uid://bd5yeg2sylr80" path="res://objects/grid_point.tscn" id="6_rpty4"]
 [ext_resource type="PackedScene" uid="uid://yexucs5j3i0b" path="res://Scenes/GUI.tscn" id="7_6jj8j"]
+[ext_resource type="Texture2D" uid="uid://bvnddsxmjc7ws" path="res://Assets/level_backgrounds/map1.png" id="8_6ll4n"]
 
 [node name="Level1" type="Node2D"]
 
 [node name="CameraContainer" parent="." instance=ExtResource("1_ysn8j")]
 
-[node name="PathController" type="Node2D" parent="."]
-script = ExtResource("2_6ll4n")
-connections = Array[PackedInt32Array]([PackedInt32Array(0, 1), PackedInt32Array(0, 2), PackedInt32Array(1, 3), PackedInt32Array(2, 3), PackedInt32Array(2, 4), PackedInt32Array(3, 4)])
+[node name="PathController" parent="." instance=ExtResource("2_6ll4n")]
+connections = Array[PackedInt32Array]([PackedInt32Array(0, 1), PackedInt32Array(1, 2), PackedInt32Array(2, 3), PackedInt32Array(3, 4), PackedInt32Array(4, 5), PackedInt32Array(5, 2), PackedInt32Array(5, 6), PackedInt32Array(6, 7), PackedInt32Array(7, 8), PackedInt32Array(6, 9), PackedInt32Array(9, 10)])
 
 [node name="Player" parent="." instance=ExtResource("3_kylad")]
 z_index = 1
 position = Vector2(-29, -18)
 
 [node name="Enemy" parent="." instance=ExtResource("4_bdlbp")]
-position = Vector2(50, 21)
-PathArray = Array[int]([4, 3, 2, 0, 1])
+position = Vector2(64, 136)
+PathArray = Array[int]([8, 7, 6])
 
 [node name="Enemy2" parent="." instance=ExtResource("5_ysn8j")]
-position = Vector2(-19, 37)
-PathArray = Array[int]([3, 1])
+position = Vector2(164, -21)
+PathArray = Array[int]([5, 4, 3, 2])
 
 [node name="pointArray" type="Node" parent="."]
 
@@ -34,15 +34,40 @@ PathArray = Array[int]([3, 1])
 position = Vector2(-29, -18)
 
 [node name="point1" parent="pointArray" instance=ExtResource("6_rpty4")]
-position = Vector2(-28, 5)
+position = Vector2(12, -18)
 
 [node name="point2" parent="pointArray" instance=ExtResource("6_rpty4")]
-position = Vector2(21, -12)
+position = Vector2(66, -21)
 
 [node name="point3" parent="pointArray" instance=ExtResource("6_rpty4")]
-position = Vector2(-19, 39)
+position = Vector2(66, -48)
 
 [node name="point4" parent="pointArray" instance=ExtResource("6_rpty4")]
-position = Vector2(50, 22)
+position = Vector2(164, -49)
+
+[node name="point5" parent="pointArray" instance=ExtResource("6_rpty4")]
+position = Vector2(164, -20)
+
+[node name="point6" parent="pointArray" instance=ExtResource("6_rpty4")]
+position = Vector2(165, 16)
+
+[node name="point7" parent="pointArray" instance=ExtResource("6_rpty4")]
+position = Vector2(165, 137)
+
+[node name="point8" parent="pointArray" instance=ExtResource("6_rpty4")]
+position = Vector2(64, 137)
+
+[node name="point9" parent="pointArray" instance=ExtResource("6_rpty4")]
+position = Vector2(205, 16)
+
+[node name="point10" parent="pointArray" instance=ExtResource("6_rpty4")]
+position = Vector2(262, 16)
 
 [node name="CanvasLayer" parent="." instance=ExtResource("7_6jj8j")]
+visible = false
+
+[node name="Map1" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(78, 53)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("8_6ll4n")

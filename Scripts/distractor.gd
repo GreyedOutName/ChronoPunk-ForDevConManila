@@ -2,9 +2,7 @@ extends Node2D
 
 var Astar:AStar2D;
 
-func _ready():
-	Astar = $"../PathController".getAstar()
-	
+func checkForEnemies():
 	var currentPoint = Astar.get_closest_point(global_position)
 	var connectedPoints:Array = Astar.get_point_connections(currentPoint)
 	
@@ -21,6 +19,14 @@ func _ready():
 			var whoisthis = areaHit.collider.get_parent()
 			if whoisthis.is_in_group("enemy"):
 				whoisthis.distracted(global_position)
+				
+func _new_turn():
+	checkForEnemies()
+
+func _ready():
+	Astar = $"../PathController".getAstar()
+	GlobalSignals.new_turn.connect(_new_turn)
+	checkForEnemies()
 
 func _on_area_2d_area_entered(area):
 	var whatsInThisNode = area.get_parent()
