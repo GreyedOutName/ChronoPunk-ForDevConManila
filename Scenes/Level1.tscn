@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c7p4wvthpujqt"]
+[gd_scene load_steps=8 format=3 uid="uid://c7p4wvthpujqt"]
 
 [ext_resource type="PackedScene" uid="uid://w5fhv5wx7ee8" path="res://objects/camera_container.tscn" id="1_ysn8j"]
 [ext_resource type="Script" uid="uid://csns72yt0bu78" path="res://Scripts/path_controller.gd" id="2_6ll4n"]
 [ext_resource type="PackedScene" uid="uid://cmvmi1eqfgt6a" path="res://objects/player.tscn" id="3_kylad"]
 [ext_resource type="PackedScene" uid="uid://mwss4orfwysh" path="res://objects/enemy.tscn" id="4_bdlbp"]
+[ext_resource type="PackedScene" uid="uid://k6h23knn2yl0" path="res://objects/enemy_2.tscn" id="5_ysn8j"]
 [ext_resource type="PackedScene" uid="uid://bd5yeg2sylr80" path="res://objects/grid_point.tscn" id="6_rpty4"]
 [ext_resource type="PackedScene" uid="uid://yexucs5j3i0b" path="res://Scenes/GUI.tscn" id="7_6jj8j"]
 
@@ -22,6 +23,10 @@ position = Vector2(-29, -18)
 [node name="Enemy" parent="." instance=ExtResource("4_bdlbp")]
 position = Vector2(50, 21)
 PathArray = Array[int]([4, 3, 2, 0, 1])
+
+[node name="Enemy2" parent="." instance=ExtResource("5_ysn8j")]
+position = Vector2(-19, 37)
+PathArray = Array[int]([3, 1])
 
 [node name="pointArray" type="Node" parent="."]
 

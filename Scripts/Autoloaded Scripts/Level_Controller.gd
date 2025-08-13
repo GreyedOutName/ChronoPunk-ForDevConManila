@@ -16,6 +16,14 @@ var levelScore:Dictionary = {
 	5:null,
 }
 
+var levelTurnLimit:Dictionary = {
+	1:10,
+	2:10,
+	3:10,
+	4:10,
+	5:10,
+}
+
 var cutSceneIndex:int;
 var cutSceneRenderer = "res://Scenes/cut_scene_renderer.tscn"
 var levelSelect = "res://Scenes/level_select.tscn"

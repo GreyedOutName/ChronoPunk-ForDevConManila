@@ -15,7 +15,7 @@ var teleporterPointer:Node2D;
 
 #GUI references
 @export var ActionsMenu:Control;
-@export var MoveButton:Button;
+@export var TeleporterButtonContainer:NinePatchRect;
 @export var TalkButton:Button;
 
 #Variables related to Signals
@@ -79,6 +79,13 @@ func _on_area_2d_area_entered(area:Area2D):
 		dialogueText = whatsInThisNode.dialogueResourceRef.dialogueText;
 		dialogueLabel = whatsInThisNode.dialogueResourceRef.dialogueLabel;
 		TalkButton.visible = true
+	elif whatsInThisNode.is_in_group("enemy"):
+		GlobalSignals.level_repeat.emit()
+	elif whatsInThisNode.is_in_group("object"):
+		dialogueText = whatsInThisNode.dialogueResourceRef.dialogueText;
+		dialogueLabel = whatsInThisNode.dialogueResourceRef.dialogueLabel;
+		TalkButton.text = "INTERACT"
+		TalkButton.visible = true
 		
 func _on_area_2d_area_exited(area):
 	var whatsInThisNode = area.get_parent()
@@ -91,7 +98,7 @@ func _on_talk_button_button_down():
 
 func _on_move_button_button_down():
 	ActionsMenu.visible = false;
-	GlobalSignals.player_choosing_move.emit()
+	GlobalSignals.player_choosing_move.emit("Click where you want to move.")
 	allowMove = !allowMove # This is from the move button
 	
 func _on_wait_button_button_down():
@@ -130,6 +137,10 @@ func _exit_dialogue():
 
 #for the 3 items
 func _on_distractor_button_button_up():
+	items_left[0] -= 1
+	
+	ActionsMenu.visible = false;
+	GlobalSignals.player_choosing_move.emit("Click where to place teleporter.")
 	pass # Replace with function body.
 	
 func _on_teleporter_button_button_up():
@@ -137,10 +148,17 @@ func _on_teleporter_button_button_up():
 		global_position = teleporterPointer.global_position
 		target_position = teleporterPointer.global_position
 		teleporterPointer.queue_free()
+		GlobalSignals.player_choosing_move.emit("Teleporter Used")
+		
+		TeleporterButtonContainer.visible = false
 	else:
+		items_left[1] -= 1
 		teleporterPointer = teleporter.instantiate()
 		teleporterPointer.global_position = global_position
 		get_tree().current_scene.add_child(teleporterPointer)
+		GlobalSignals.player_choosing_move.emit("Teleporter Placed")
 
 func _on_invis_button_button_up():
+	items_left[2] -= 1
+	GlobalSignals.player_choosing_move.emit("Invisible for next turn")
 	pass # Replace with function body.

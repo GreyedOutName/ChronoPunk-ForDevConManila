@@ -59,9 +59,9 @@ func _change_dialogue(key):
 	
 	dialogueChoices.visible = false;
 
-func _player_choosing_move():
+func _player_choosing_move(textToDisplay:String):
 	reminderText.visible = true
-	reminderText.text = "Click on the point you want to move to."
+	reminderText.text = textToDisplay
 	
 func _new_turn():
 	reminderText.visible = false

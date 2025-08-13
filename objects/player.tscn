@@ -9,15 +9,15 @@
 [ext_resource type="Texture2D" uid="uid://b3nsvjqudcydy" path="res://Assets/UI_Assets/Invicibility-Icon.png" id="7_i825w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6l7je"]
-size = Vector2(11, 17)
+size = Vector2(11, 11.5)
 
 [sub_resource type="Theme" id="Theme_eqqp1"]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("ActionsMenu", "MoveButton", "TalkButton")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("ActionsMenu", "TeleporterButtonContainer", "TalkButton")]
 visibility_layer = 512
 script = ExtResource("1_eqqp1")
 ActionsMenu = NodePath("Control")
-MoveButton = NodePath("Control/MarginContainer/VBoxContainer/HBoxContainer/MoveButton")
+TeleporterButtonContainer = NodePath("Control/MarginContainer/VBoxContainer/Inventory/TeleporterButton")
 TalkButton = NodePath("Control/MarginContainer/VBoxContainer/HBoxContainer/TalkButton")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -157,6 +157,7 @@ size_flags_vertical = 4
 texture = ExtResource("3_uxov2")
 
 [node name="numberLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/Inventory/DistractorButton" node_paths=PackedStringArray("Player")]
+z_index = 5
 layout_mode = 0
 offset_left = 31.9355
 offset_top = 26.4194
@@ -191,7 +192,7 @@ texture = ExtResource("3_uxov2")
 
 [node name="numberLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/Inventory/TeleporterButton" node_paths=PackedStringArray("Player")]
 visibility_layer = 512
-z_index = 1
+z_index = 5
 layout_mode = 0
 offset_left = 31.9355
 offset_top = 26.4194
@@ -226,7 +227,7 @@ size_flags_vertical = 4
 texture = ExtResource("3_uxov2")
 
 [node name="numberLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/Inventory/InvisibilityButton" node_paths=PackedStringArray("Player")]
-z_index = 1
+z_index = 5
 layout_mode = 0
 offset_left = 31.9355
 offset_top = 26.4194

@@ -1,7 +1,7 @@
 extends Node
 
 signal new_turn()
-signal player_choosing_move()
+signal player_choosing_move(Text:String)
 
 signal open_dialogue(dialogueText:String, characterName:String)
 signal continue_dialogue()

@@ -1,14 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://mwss4orfwysh"]
+[gd_scene load_steps=4 format=3 uid="uid://k6h23knn2yl0"]
 
-[ext_resource type="Script" uid="uid://co87obe2aipqd" path="res://Scripts/enemy.gd" id="1_882u1"]
-[ext_resource type="Texture2D" uid="uid://c3q1de476caav" path="res://Assets/characters/robot%20guard%201.png" id="2_7jlpp"]
+[ext_resource type="Script" uid="uid://co87obe2aipqd" path="res://Scripts/enemy.gd" id="1_ynert"]
+[ext_resource type="Texture2D" uid="uid://drc5p204455cq" path="res://Assets/characters/resistant1.png" id="2_plgxw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6l7je"]
 size = Vector2(11, 11)
 
-[node name="Enemy" type="CharacterBody2D" groups=["enemy", "npc"]]
+[node name="enemy2" type="CharacterBody2D" groups=["enemy", "npc"]]
 visibility_layer = 512
-script = ExtResource("1_882u1")
+script = ExtResource("1_ynert")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -18,9 +18,9 @@ disabled = true
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visibility_layer = 512
 z_index = 1
-position = Vector2(0, -9)
+position = Vector2(1, -11)
 scale = Vector2(0.05, 0.05)
-texture = ExtResource("2_7jlpp")
+texture = ExtResource("2_plgxw")
 
 [node name="Area2D" type="Area2D" parent="."]
 
