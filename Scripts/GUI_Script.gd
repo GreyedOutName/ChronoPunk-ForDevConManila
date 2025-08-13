@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 @export var turnIndicator:Label;
+@export var turnLimitLabel:Label;
 @export var dialogueBox:MarginContainer;
 @export var dialogueChoices:MarginContainer;
 @export var ChoicesVbox:VBoxContainer;
@@ -32,6 +33,8 @@ func _ready():
 			GameObjectives.add_child(newObjective)
 
 func _process(delta):
+	if LevelController.levelCurrentlyIn != 0:
+		turnLimitLabel.text = ("Turn Limit: " + str(LevelController.levelTurnLimit[LevelController.levelCurrentlyIn]))
 	Score.text = "Score: "+str(Objectives.score)
 
 func _open_dialogue(Text, Name):
@@ -67,10 +70,10 @@ func _new_turn():
 	reminderText.visible = false
 	turnIndicator.text = ("Turn: " + str(TurnController.turn_number)) 
 	
-func _objective_completed(index:int,score:int):
+func _objective_completed(levelIndex:String,objectiveIndex:int,score:int):
 	var arrayOfText:Array[Node] = GameObjectives.get_children()
-	var newText = "[color=#FF0000][s]"+arrayOfText[index].text+"[/s][/color]"
-	arrayOfText[index].text = newText
+	var newText = "[color=#FF0000][s]"+arrayOfText[objectiveIndex].text+"[/s][/color]"
+	arrayOfText[objectiveIndex].text = newText
 	
 func _on_invisible_button_button_up():
 	GlobalSignals.continue_dialogue.emit()

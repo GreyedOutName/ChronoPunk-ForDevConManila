@@ -17,7 +17,7 @@ var levelScore:Dictionary = {
 }
 
 var levelTurnLimit:Dictionary = {
-	1:10,
+	1:14,
 	2:10,
 	3:10,
 	4:10,
@@ -28,6 +28,8 @@ var cutSceneIndex:int;
 var cutSceneRenderer = "res://Scenes/cut_scene_renderer.tscn"
 var levelSelect = "res://Scenes/level_select.tscn"
 
+var levelCurrentlyIn:int;
+
 func _ready():
 	GlobalSignals.level_repeat.connect(_level_repeat)
 	GlobalSignals.level_complete.connect(_level_complete)
@@ -35,21 +37,25 @@ func _ready():
 	GlobalSignals.level_select.connect(_level_select)
 	
 	var loadFile = SaveManager.load_game_data()
+	print(loadFile)
 	if typeof(loadFile) == TYPE_DICTIONARY and not loadFile.is_empty():
-		levelScore = loadFile
+		var fixed = {}
+		for key in loadFile.keys():
+			fixed[int(key)] = loadFile[key]
+		levelScore = fixed
 	
 func _level_repeat():
 	get_tree().reload_current_scene()
 
-func _level_complete(levelNum:int):
+func _level_complete():
 	var scoreObtained = Objectives.score
 	
-	levelScore[levelNum] = scoreObtained
+	levelScore[levelCurrentlyIn] = scoreObtained
 	Objectives.score = 0; #resets score counter
 	
 	#code that unlocks the next level for level select
-	if (levelNum+1)<6:
-		levelScore[levelNum+1] = 0; #turns score from null into 0, making it "unlocked"
+	if (levelCurrentlyIn+1)<6:
+		levelScore[levelCurrentlyIn+1] = 0; #turns score from null into 0, making it "unlocked"
 		
 	SaveManager.save_game_data(levelScore)
 	get_tree().change_scene_to_file(levelSelect)
@@ -59,4 +65,6 @@ func _level_select(levelNum:int):
 	get_tree().change_scene_to_file(cutSceneRenderer)
 
 func _level_load(levelNum:int):
+	print(levelNum)
+	levelCurrentlyIn = levelNum
 	get_tree().change_scene_to_file(levelSceneRef[levelNum])

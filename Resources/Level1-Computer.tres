@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="dialogue_resource" load_steps=2 format=3 uid="uid://nc5vv4bro1t5"]
+
+[ext_resource type="Script" uid="uid://cprybsuenpluj" path="res://Scripts/Resources Scripts/dialogue_resource_script.gd" id="1_skfab"]
+
+[resource]
+script = ExtResource("1_skfab")
+dialogueText = Dictionary[String, Array]({
+"1st": ["The Computer beeps to life in front of you", {
+"2nd": "Action: Search For the Files"
+}],
+"2nd": ["*You put your cybersecurity degree to good use*", "Soon enough you found the files.", {
+"3rd": "Action: Delete them!"
+}],
+"3rd": ["*You breathe a sigh of relief*", "Another perfect mission.", "Everything you will ever do will be perfect.", "That's what they want from everyone.", "Time for extraction."]
+})
+dialogueLabel = "Computer"
+metadata/_custom_type_script = "uid://cprybsuenpluj"

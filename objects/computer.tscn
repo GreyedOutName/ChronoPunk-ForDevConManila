@@ -1,16 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://de0yxv1ohxh12"]
+[gd_scene load_steps=4 format=3 uid="uid://de0yxv1ohxh12"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_rbca2"]
+[ext_resource type="Script" uid="uid://bh2ilqh441sxv" path="res://Scripts/computer.gd" id="1_glfkg"]
+[ext_resource type="Texture2D" uid="uid://butnllrq5ccin" path="res://Assets/props/Laptop-1.png.png" id="2_q8wpg"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6q2e"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1a14g"]
 
-[node name="Computer" type="Node2D"]
+[node name="Computer" type="Node2D" groups=["object"]]
+script = ExtResource("1_glfkg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(6.255, 6.255)
-texture = SubResource("CanvasTexture_rbca2")
+position = Vector2(2.38419e-07, -22)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_q8wpg")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_w6q2e")
+shape = SubResource("RectangleShape2D_1a14g")

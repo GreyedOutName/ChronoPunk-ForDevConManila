@@ -13,7 +13,7 @@ size = Vector2(11, 11.5)
 
 [sub_resource type="Theme" id="Theme_eqqp1"]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("ActionsMenu", "TeleporterButtonContainer", "TalkButton", "PlayerSprite")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("ActionsMenu", "TeleporterButtonContainer", "TalkButton", "PlayerSprite") groups=["player"]]
 visibility_layer = 512
 script = ExtResource("1_eqqp1")
 ActionsMenu = NodePath("Control")
@@ -27,6 +27,7 @@ shape = SubResource("RectangleShape2D_6l7je")
 disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 5
 position = Vector2(0, -11)
 scale = Vector2(0.05, 0.049)
 texture = ExtResource("2_nmc1l")

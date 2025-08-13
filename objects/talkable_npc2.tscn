@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfvup0jxvyxqy"]
+
+[ext_resource type="Script" uid="uid://cbvry1say0rbt" path="res://Scripts/talkable_npc.gd" id="1_eihv6"]
+[ext_resource type="Texture2D" uid="uid://dqq0g5hg6g8nl" path="res://Assets/characters/civilian1.png" id="2_y3pxe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6l7je"]
+size = Vector2(11, 11)
+
+[node name="TalkableNPC" type="CharacterBody2D" groups=["npc", "talkable_npc"]]
+visibility_layer = 512
+script = ExtResource("1_eihv6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_6l7je")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visibility_layer = 512
+z_index = 1
+position = Vector2(0, -9)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_y3pxe")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 13)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_6l7je")

@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfuxm5tuc35fx"]
+
+[ext_resource type="Script" uid="uid://cbvry1say0rbt" path="res://Scripts/talkable_npc.gd" id="1_1mhlc"]
+[ext_resource type="Texture2D" uid="uid://c3q1de476caav" path="res://Assets/characters/robot%20guard%201.png" id="2_18j37"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6l7je"]
+size = Vector2(11, 11)
+
+[node name="TalkableNPC" type="CharacterBody2D" groups=["npc", "talkable_npc"]]
+visibility_layer = 512
+script = ExtResource("1_1mhlc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_6l7je")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visibility_layer = 512
+z_index = 1
+position = Vector2(0, -9)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_18j37")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_6l7je")

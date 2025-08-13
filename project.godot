@@ -37,6 +37,8 @@ enemy=""
 PathNodes=""
 talkable_npc=""
 npc=""
+object=""
+player=""
 
 [input]
 

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bt8mqo110x2f0"]
+
+[ext_resource type="Texture2D" uid="uid://b01b8y6mo3d3p" path="res://Assets/props/LevelCompleteIndicator.png" id="1_68oh0"]
+[ext_resource type="Script" uid="uid://w4ygt2w3mjvv" path="res://objects/level_complete_area.gd" id="1_ft37a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ft37a"]
+
+[node name="LevelCompleteArea" type="Node2D" node_paths=PackedStringArray("completionArea")]
+script = ExtResource("1_ft37a")
+completionArea = NodePath("Area2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -29)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_68oh0")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_ft37a")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

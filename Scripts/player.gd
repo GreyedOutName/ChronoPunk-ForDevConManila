@@ -149,7 +149,7 @@ func _on_area_2d_area_entered(area:Area2D):
 	elif whatsInThisNode.is_in_group("object"):
 		dialogueText = whatsInThisNode.dialogueResourceRef.dialogueText;
 		dialogueLabel = whatsInThisNode.dialogueResourceRef.dialogueLabel;
-		TalkButton.text = "INTERACT"
+		TalkButton.get_child(0).text = "USE"
 		TalkButton.visible = true
 		
 func _on_area_2d_area_exited(area):
