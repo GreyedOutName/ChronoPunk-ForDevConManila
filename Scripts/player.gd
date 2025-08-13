@@ -6,11 +6,13 @@ var speed = 120;
 var click_position;
 var target_position = null;
 var allowMove = false;
+var placingDistractor = false;
 var Astar:AStar2D;
 
 #For Equipment
 var items_left:Array[int] = [2,1,1]
 var teleporter = preload("res://objects/teleporter_pointer.tscn")
+var distractor = preload("res://objects/distractor.tscn")
 var teleporterPointer:Node2D;
 
 #GUI references
@@ -52,12 +54,31 @@ func movePlayer(roughTargetPosition:Vector2):
 		target_position = path[1]
 		GlobalSignals.new_turn.emit()
 		allowMove = !allowMove
+		
+func placeDistractor(roughTargetPosition:Vector2):
+	var closest_point = Astar.get_closest_point(roughTargetPosition)
+	
+	#check if mouse input is actually close to point
+	var closest_point_position = Astar.get_point_position(closest_point)
+	var maxDistance = 10; #in pixels
+	if roughTargetPosition.distance_to(closest_point_position) > maxDistance:
+		return
+	
+	var newDistractor:Node2D = distractor.instantiate()
+	newDistractor.global_position = closest_point_position
+	get_tree().current_scene.add_child(newDistractor)
+	GlobalSignals.player_choosing_move.emit("Distractor Placed")
+	ActionsMenu.visible = true;
 
 func _physics_process(_delta):
 	
 	if Input.is_action_just_pressed("leftclick") and allowMove:
 		click_position = get_global_mouse_position()
 		movePlayer(click_position)
+		
+	if Input.is_action_just_pressed("leftclick") and placingDistractor:
+		click_position = get_global_mouse_position()
+		placeDistractor(click_position)
 		
 	if target_position != null:
 		var distance = global_position.distance_to(target_position);
@@ -140,8 +161,8 @@ func _on_distractor_button_button_up():
 	items_left[0] -= 1
 	
 	ActionsMenu.visible = false;
-	GlobalSignals.player_choosing_move.emit("Click where to place teleporter.")
-	pass # Replace with function body.
+	placingDistractor = true
+	GlobalSignals.player_choosing_move.emit("Click where to place distractor.")
 	
 func _on_teleporter_button_button_up():
 	if teleporterPointer:
@@ -161,4 +182,3 @@ func _on_teleporter_button_button_up():
 func _on_invis_button_button_up():
 	items_left[2] -= 1
 	GlobalSignals.player_choosing_move.emit("Invisible for next turn")
-	pass # Replace with function body.
