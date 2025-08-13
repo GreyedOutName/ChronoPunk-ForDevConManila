@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="dialogue_resource" load_steps=2 format=3 uid="uid://b3ievmlbaxonh"]
+
+[ext_resource type="Script" uid="uid://cprybsuenpluj" path="res://Scripts/Resources Scripts/dialogue_resource_script.gd" id="1_n56a2"]
+
+[resource]
+script = ExtResource("1_n56a2")
+dialogueText = Dictionary[String, Array]({
+"1st": ["Who- Oh no! You're with them aren't you?", "Please don't kill me!", "Please- please, I can give you info on the base.", {}],
+"2nd": ["Yes- yes o-of course.", "Ahem- Theres 2 computers below yes?", "The top right one is what you want.", "I know what you are here for.", "It would be good to reach the bottom right though.", "There might be additional info there.", "You're not killing me, right?", {}],
+"3rd": ["Yes. Of course.", "-*You leave him be*- yet your auditory sensors picked up as you left-", "\"Time Fascist Pig\"", "A curse at you, and your ilk."]
+})
+dialogueLabel = "Benuwe"
+metadata/_custom_type_script = "uid://cprybsuenpluj"

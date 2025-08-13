@@ -1,20 +1,26 @@
-[gd_scene load_steps=9 format=3 uid="uid://dkrdc5brulv2j"]
+[gd_scene load_steps=15 format=3 uid="uid://dkrdc5brulv2j"]
 
 [ext_resource type="PackedScene" uid="uid://w5fhv5wx7ee8" path="res://objects/camera_container.tscn" id="1_cp0jt"]
 [ext_resource type="PackedScene" uid="uid://dsk0qglenlrlm" path="res://objects/objective_completion_controller.tscn" id="2_p6pjf"]
+[ext_resource type="Script" uid="uid://cblk3ym4icjnv" path="res://Scripts/Level Objective Controllers/Level3_objective_controller.gd" id="3_ffsx8"]
 [ext_resource type="PackedScene" uid="uid://0cq0wjutmxpf" path="res://objects/path_controller.tscn" id="3_m7vvj"]
 [ext_resource type="PackedScene" uid="uid://cmvmi1eqfgt6a" path="res://objects/player.tscn" id="4_kg31f"]
 [ext_resource type="PackedScene" uid="uid://bd5yeg2sylr80" path="res://objects/grid_point.tscn" id="5_ncjpd"]
 [ext_resource type="PackedScene" uid="uid://yexucs5j3i0b" path="res://Scenes/GUI.tscn" id="6_ffsx8"]
 [ext_resource type="PackedScene" uid="uid://bt8mqo110x2f0" path="res://objects/level_complete_area.tscn" id="7_dl4b5"]
 [ext_resource type="Texture2D" uid="uid://budv7hahhpdqq" path="res://Assets/level_backgrounds/map3.png" id="8_cp0jt"]
+[ext_resource type="PackedScene" uid="uid://p36wg4vd3anl" path="res://objects/locker.tscn" id="9_p6pjf"]
+[ext_resource type="PackedScene" uid="uid://8l3v46h0oi1l" path="res://objects/enemy_3.tscn" id="10_ncjpd"]
+[ext_resource type="PackedScene" uid="uid://k6h23knn2yl0" path="res://objects/enemy_2.tscn" id="11_ffsx8"]
+[ext_resource type="PackedScene" uid="uid://sn7vend6b6yo" path="res://objects/talkable_npc3.tscn" id="12_dl4b5"]
+[ext_resource type="PackedScene" uid="uid://de0yxv1ohxh12" path="res://objects/computer.tscn" id="14_dl4b5"]
 
 [node name="Level3" type="Node2D"]
 
 [node name="CameraContainer" parent="." instance=ExtResource("1_cp0jt")]
 
-[node name="ObjectiveCompletionController" parent="." node_paths=PackedStringArray("thePlayer") instance=ExtResource("2_p6pjf")]
-thePlayer = NodePath("../Player")
+[node name="ObjectiveCompletionController" parent="." instance=ExtResource("2_p6pjf")]
+script = ExtResource("3_ffsx8")
 
 [node name="PathController" parent="." instance=ExtResource("3_m7vvj")]
 connections = Array[PackedInt32Array]([PackedInt32Array(0, 1), PackedInt32Array(1, 2), PackedInt32Array(3, 1), PackedInt32Array(3, 4), PackedInt32Array(4, 5), PackedInt32Array(5, 15), PackedInt32Array(15, 16), PackedInt32Array(16, 17), PackedInt32Array(16, 18), PackedInt32Array(18, 11), PackedInt32Array(11, 12), PackedInt32Array(12, 13), PackedInt32Array(12, 14), PackedInt32Array(11, 10), PackedInt32Array(10, 9), PackedInt32Array(10, 8), PackedInt32Array(8, 7), PackedInt32Array(8, 4), PackedInt32Array(7, 6), PackedInt32Array(4, 6), PackedInt32Array(7, 9)])
@@ -83,6 +89,7 @@ position = Vector2(96, -107)
 position = Vector2(145, -54)
 
 [node name="CanvasLayer" parent="." instance=ExtResource("6_ffsx8")]
+visible = false
 
 [node name="LevelCompleteArea" parent="." instance=ExtResource("7_dl4b5")]
 position = Vector2(145, 117)
@@ -91,3 +98,21 @@ position = Vector2(145, 117)
 z_index = -10
 scale = Vector2(0.08, 0.08)
 texture = ExtResource("8_cp0jt")
+
+[node name="Locker" parent="." instance=ExtResource("9_p6pjf")]
+position = Vector2(96, -109)
+
+[node name="Enemy3" parent="." instance=ExtResource("10_ncjpd")]
+position = Vector2(145, -55)
+
+[node name="enemy2" parent="." instance=ExtResource("11_ffsx8")]
+position = Vector2(145, 32)
+
+[node name="Enemy4" parent="." instance=ExtResource("10_ncjpd")]
+position = Vector2(-23, 61)
+
+[node name="TalkableNPC" parent="." instance=ExtResource("12_dl4b5")]
+position = Vector2(200, 20)
+
+[node name="Computer" parent="." instance=ExtResource("14_dl4b5")]
+position = Vector2(96, 57)

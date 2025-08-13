@@ -10,6 +10,8 @@ func _on_area_2d_area_entered(area):
 	var who = area.get_parent()
 	if who.is_in_group("player") and isObjectiveCompleted:
 		GlobalSignals.level_complete.emit()
+	elif who.is_in_group("player") and !isObjectiveCompleted:
+		GlobalSignals.player_choosing_move.emit("Complete Objective First!")
 		
 func _main_objective_completed():
 	isObjectiveCompleted = true;

@@ -10,15 +10,27 @@ func _objective_completed(levelIndex,objectiveIndex,addscore):
 
 var levelObjectives:Dictionary = {
 	"Level1":[
-		" - Destroy the Files",
-		" - Reach The End Node",
+		" - Main Goal: Destroy the Files",
+		" - Leave the area undetected",
 		" - Talk to Jared",
 		" - Use The Distractor (Item 1)",
 		" - Use The Teleporter (Item 2)",
 		" - Use The Invisibility Cloak (Item 3)",
 	],
-	"Level2":[],
-	"Level3":[],
+	"Level2":[
+		" - Main Goal: Delete the Files",
+		" - Leave the area undetected",
+		" - Talk to Benuwe",
+		" - Obtain additional info",
+		" - Do not use the teleporter",
+	],
+	"Level3":[
+		" - Main Goal: Delete the Files, Again",
+		" - Leave the area undetected",
+		" - Use up all your equipment",
+		" - Talk to Aresha",
+		" - Open the locker",
+	],
 	"Level4":[],
 	"Level5":[],
 }
