@@ -1,0 +1,93 @@
+[gd_scene load_steps=9 format=3 uid="uid://dkrdc5brulv2j"]
+
+[ext_resource type="PackedScene" uid="uid://w5fhv5wx7ee8" path="res://objects/camera_container.tscn" id="1_cp0jt"]
+[ext_resource type="PackedScene" uid="uid://dsk0qglenlrlm" path="res://objects/objective_completion_controller.tscn" id="2_p6pjf"]
+[ext_resource type="PackedScene" uid="uid://0cq0wjutmxpf" path="res://objects/path_controller.tscn" id="3_m7vvj"]
+[ext_resource type="PackedScene" uid="uid://cmvmi1eqfgt6a" path="res://objects/player.tscn" id="4_kg31f"]
+[ext_resource type="PackedScene" uid="uid://bd5yeg2sylr80" path="res://objects/grid_point.tscn" id="5_ncjpd"]
+[ext_resource type="PackedScene" uid="uid://yexucs5j3i0b" path="res://Scenes/GUI.tscn" id="6_ffsx8"]
+[ext_resource type="PackedScene" uid="uid://bt8mqo110x2f0" path="res://objects/level_complete_area.tscn" id="7_dl4b5"]
+[ext_resource type="Texture2D" uid="uid://budv7hahhpdqq" path="res://Assets/level_backgrounds/map3.png" id="8_cp0jt"]
+
+[node name="Level3" type="Node2D"]
+
+[node name="CameraContainer" parent="." instance=ExtResource("1_cp0jt")]
+
+[node name="ObjectiveCompletionController" parent="." node_paths=PackedStringArray("thePlayer") instance=ExtResource("2_p6pjf")]
+thePlayer = NodePath("../Player")
+
+[node name="PathController" parent="." instance=ExtResource("3_m7vvj")]
+connections = Array[PackedInt32Array]([PackedInt32Array(0, 1), PackedInt32Array(1, 2), PackedInt32Array(3, 1), PackedInt32Array(3, 4), PackedInt32Array(4, 5), PackedInt32Array(5, 15), PackedInt32Array(15, 16), PackedInt32Array(16, 17), PackedInt32Array(16, 18), PackedInt32Array(18, 11), PackedInt32Array(11, 12), PackedInt32Array(12, 13), PackedInt32Array(12, 14), PackedInt32Array(11, 10), PackedInt32Array(10, 9), PackedInt32Array(10, 8), PackedInt32Array(8, 7), PackedInt32Array(8, 4), PackedInt32Array(7, 6), PackedInt32Array(4, 6), PackedInt32Array(7, 9)])
+
+[node name="Player" parent="." instance=ExtResource("4_kg31f")]
+z_index = 1
+position = Vector2(-146, -25)
+
+[node name="pointArray" type="Node" parent="."]
+
+[node name="point0" parent="pointArray" instance=ExtResource("5_ncjpd")]
+position = Vector2(-146, -24)
+
+[node name="point1" parent="pointArray" instance=ExtResource("5_ncjpd")]
+position = Vector2(-146, 3)
+
+[node name="point2" parent="pointArray" instance=ExtResource("5_ncjpd")]
+position = Vector2(-205, 3)
+
+[node name="point3" parent="pointArray" instance=ExtResource("5_ncjpd")]
+position = Vector2(-88, 3)
+
+[node name="point4" parent="pointArray" instance=ExtResource("5_ncjpd")]
+position = Vector2(-23, 3)
+
+[node name="point5" parent="pointArray" instance=ExtResource("5_ncjpd")]
+position = Vector2(-23, -55)
+
+[node name="point6" parent="pointArray" instance=ExtResource("5_ncjpd")]
+position = Vector2(-23, 62)
+
+[node name="point7" parent="pointArray" instance=ExtResource("5_ncjpd")]
+position = Vector2(46, 61)
+
+[node name="point8" parent="pointArray" instance=ExtResource("5_ncjpd")]
+position = Vector2(46, 3)
+
+[node name="point9" parent="pointArray" instance=ExtResource("5_ncjpd")]
+position = Vector2(95, 61)
+
+[node name="point10" parent="pointArray" instance=ExtResource("5_ncjpd")]
+position = Vector2(95, 2)
+
+[node name="point11" parent="pointArray" instance=ExtResource("5_ncjpd")]
+position = Vector2(145, 1)
+
+[node name="point12" parent="pointArray" instance=ExtResource("5_ncjpd")]
+position = Vector2(145, 32)
+
+[node name="point13" parent="pointArray" instance=ExtResource("5_ncjpd")]
+position = Vector2(200, 33)
+
+[node name="point14" parent="pointArray" instance=ExtResource("5_ncjpd")]
+position = Vector2(145, 118)
+
+[node name="point15" parent="pointArray" instance=ExtResource("5_ncjpd")]
+position = Vector2(45, -54)
+
+[node name="point16" parent="pointArray" instance=ExtResource("5_ncjpd")]
+position = Vector2(96, -54)
+
+[node name="point17" parent="pointArray" instance=ExtResource("5_ncjpd")]
+position = Vector2(96, -107)
+
+[node name="point18" parent="pointArray" instance=ExtResource("5_ncjpd")]
+position = Vector2(145, -54)
+
+[node name="CanvasLayer" parent="." instance=ExtResource("6_ffsx8")]
+
+[node name="LevelCompleteArea" parent="." instance=ExtResource("7_dl4b5")]
+position = Vector2(145, 117)
+
+[node name="Map3" type="Sprite2D" parent="."]
+z_index = -10
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("8_cp0jt")

@@ -4,6 +4,9 @@ var move_limit := 150 #value in pixels
 var zoom_min := 2.0
 var zoom_max := 12.0
 
+func _ready():
+	global_position = get_tree().current_scene.get_node("Player").global_position
+
 func _input(event):
 	if event is InputEventMouseMotion:
 		if Input.is_action_pressed("rightclick"):
