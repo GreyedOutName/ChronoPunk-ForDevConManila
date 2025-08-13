@@ -57,18 +57,24 @@ func movePlayer(roughTargetPosition:Vector2):
 		
 func placeDistractor(roughTargetPosition:Vector2):
 	var closest_point = Astar.get_closest_point(roughTargetPosition)
+	var current_point = Astar.get_closest_point(global_position)
 	
-	#check if mouse input is actually close to point
-	var closest_point_position = Astar.get_point_position(closest_point)
-	var maxDistance = 10; #in pixels
-	if roughTargetPosition.distance_to(closest_point_position) > maxDistance:
-		return
-	
-	var newDistractor:Node2D = distractor.instantiate()
-	newDistractor.global_position = closest_point_position
-	get_tree().current_scene.add_child(newDistractor)
-	GlobalSignals.player_choosing_move.emit("Distractor Placed")
-	ActionsMenu.visible = true;
+	if Astar.are_points_connected(closest_point,current_point):
+		#check if mouse input is actually close to point
+		var closest_point_position = Astar.get_point_position(closest_point)
+		var maxDistance = 10; #in pixels
+		if roughTargetPosition.distance_to(closest_point_position) > maxDistance:
+			return
+		
+		var newDistractor:Node2D = distractor.instantiate()
+		newDistractor.global_position = closest_point_position
+		get_tree().current_scene.add_child(newDistractor)
+		GlobalSignals.player_choosing_move.emit("Distractor Placed")
+		
+		placingDistractor=false
+		ActionsMenu.visible = true;
+	else:
+		GlobalSignals.player_choosing_move.emit("Can only place in adjacent nodes")
 
 func _physics_process(_delta):
 	

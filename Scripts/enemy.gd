@@ -3,19 +3,22 @@ extends npc
 var isDistracted = false;
 var isChasing = false
 
-func _on_new_turn():
-	if isDistracted:
-		isDistracted = false
-		var idOfPath = Astar.get_closest_point(global_position)
-		currentPathIndex = PathArray.find(idOfPath)
-		target_position = Astar.get_point_position(PathArray[currentPathIndex])
-		pass
-	elif isChasing:
-		pass
-	else:
-		move()
+var distractorPosition = null;
 
-func distracted(position:Vector2):
+func _on_new_turn():
+	if isDistracted and distractorPosition != null: #this code is going back from distracted status to normal
+		target_position=distractorPosition
+		
+		isDistracted = false
+		distractorPosition = null
+		return
+		
+	var idOfPath = Astar.get_closest_point(global_position)
+	currentPathIndex = PathArray.find(idOfPath)
+	target_position = Astar.get_point_position(PathArray[currentPathIndex])
+	move()
+
+func distracted(distractorPosArgument:Vector2):
 	isDistracted = true
-	target_position = position
+	distractorPosition = distractorPosArgument
 		
