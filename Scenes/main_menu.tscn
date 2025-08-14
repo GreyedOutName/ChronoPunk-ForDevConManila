@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://lh3lmqk4m3wy"]
+[gd_scene load_steps=8 format=3 uid="uid://lh3lmqk4m3wy"]
 
 [ext_resource type="Script" uid="uid://ckbiaybkeb5d1" path="res://Scripts/main_menu.gd" id="1_28flt"]
 [ext_resource type="Texture2D" uid="uid://5ykq02y86dbx" path="res://Assets/UI_Assets/ChronoPunk_LOGO.png" id="2_48xlc"]
+[ext_resource type="Script" uid="uid://dbqhsdh7j4jwb" path="res://Scripts/Autoloaded Scripts/musicPlayer.gd" id="2_n45e2"]
+[ext_resource type="FontFile" uid="uid://bws52v08mj1ei" path="res://Assets/good timing bd.otf" id="3_1ehe0"]
+[ext_resource type="Shader" uid="uid://vyan6dkukrr4" path="res://Scripts/scroll.gdshader" id="4_opfnp"]
+[ext_resource type="Texture2D" uid="uid://qo1qut27rq7c" path="res://Assets/level_backgrounds/starryNightSky.png" id="5_cp0ys"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yhxw7"]
+shader = ExtResource("4_opfnp")
+shader_parameter/speed = 0.01
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_28flt")
@@ -10,11 +18,26 @@ script = ExtResource("1_28flt")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="Pattern" type="TextureRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_yhxw7")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1952.0
+offset_top = -1092.0
+offset_right = 3832.0
+offset_bottom = 2132.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_cp0ys")
+metadata/_edit_lock_ = true
+
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(551, 148)
-scale = Vector2(0.13, 0.13)
+position = Vector2(550, 64)
+scale = Vector2(0.113138, 0.113043)
 texture = ExtResource("2_48xlc")
 centered = false
+metadata/_edit_lock_ = true
 
 [node name="PlayButton" type="Button" parent="CanvasLayer"]
 z_index = 5
@@ -23,14 +46,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -51.155
-offset_top = 186.0
-offset_right = 77.845
-offset_bottom = 277.0
+offset_left = -59.0
+offset_top = 56.0
+offset_right = 86.0
+offset_bottom = 147.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("3_1ehe0")
 theme_override_font_sizes/font_size = 60
 text = "Play"
 
@@ -40,17 +64,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -700.0
-offset_top = 391.0
-offset_right = 700.0
-offset_bottom = 556.0
+offset_left = -1372.0
+offset_top = 417.0
+offset_right = 28.0
+offset_bottom = 582.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_1ehe0")
 theme_override_font_sizes/font_size = 40
 text = "A Game By Team 60Secs"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 z_index = -5
@@ -61,6 +87,52 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.117476, 0.220841, 0.20201, 1)
+color = Color(0.0219006, 0.0188909, 0.171936, 1)
+metadata/_edit_lock_ = true
+
+[node name="CreditsButton" type="Button" parent="CanvasLayer"]
+z_index = 5
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = 175.0
+offset_right = 131.0
+offset_bottom = 266.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("3_1ehe0")
+theme_override_font_sizes/font_size = 60
+text = "Credits"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer"]
+z_index = 5
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.0
+offset_top = 299.0
+offset_right = 86.0
+offset_bottom = 390.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("3_1ehe0")
+theme_override_font_sizes/font_size = 60
+text = "Quit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+script = ExtResource("2_n45e2")
 
 [connection signal="button_down" from="CanvasLayer/PlayButton" to="." method="_on_play_button_button_down"]
+[connection signal="mouse_entered" from="CanvasLayer/PlayButton" to="." method="_on_play_button_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/CreditsButton" to="." method="_on_credits_button_mouse_entered"]
+[connection signal="button_down" from="CanvasLayer/QuitButton" to="." method="_on_quit_button_button_down"]
+[connection signal="mouse_entered" from="CanvasLayer/QuitButton" to="." method="_on_quit_button_mouse_entered"]

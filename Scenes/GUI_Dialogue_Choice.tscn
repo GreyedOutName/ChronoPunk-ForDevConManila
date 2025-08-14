@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://0n0b78kr6m02"]
+[gd_scene load_steps=4 format=3 uid="uid://0n0b78kr6m02"]
 
 [ext_resource type="Texture2D" uid="uid://bn5yi7epchlxh" path="res://Assets/UI_Assets/windowUI2.png" id="1_ten2o"]
 [ext_resource type="Script" uid="uid://wiik7opweovo" path="res://Scripts/GUI_choices_script.gd" id="2_7h1w7"]
+[ext_resource type="FontFile" uid="uid://bws52v08mj1ei" path="res://Assets/good timing bd.otf" id="3_frfto"]
 
 [node name="DialogueChoiceContainer" type="NinePatchRect" node_paths=PackedStringArray("button")]
 custom_minimum_size = Vector2(800, 100)
@@ -33,6 +34,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_frfto")
 theme_override_font_sizes/font_size = 45
 text = "No, I'm a fake"
 

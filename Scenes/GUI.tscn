@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://yexucs5j3i0b"]
+[gd_scene load_steps=4 format=3 uid="uid://yexucs5j3i0b"]
 
 [ext_resource type="Script" uid="uid://ciwpwsa54mgfi" path="res://Scripts/GUI_Script.gd" id="1_bpa6r"]
 [ext_resource type="Texture2D" uid="uid://bn5yi7epchlxh" path="res://Assets/UI_Assets/windowUI2.png" id="2_ptolr"]
+[ext_resource type="FontFile" uid="uid://bws52v08mj1ei" path="res://Assets/good timing bd.otf" id="3_hnmit"]
 
 [node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("turnIndicator", "turnLimitLabel", "dialogueBox", "dialogueChoices", "ChoicesVbox", "dialogueText", "dialogueLabel", "reminderText", "GameObjectives", "Score")]
 script = ExtResource("1_bpa6r")
@@ -41,6 +42,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_hnmit")
 theme_override_font_sizes/font_size = 50
 text = "Turn: 1"
 horizontal_alignment = 1
@@ -65,6 +67,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_hnmit")
 theme_override_font_sizes/font_size = 28
 text = "Turn Limit: 10"
 horizontal_alignment = 1
@@ -89,6 +92,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_hnmit")
 theme_override_font_sizes/font_size = 40
 text = "Score: 0"
 horizontal_alignment = 1
@@ -142,6 +146,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_hnmit")
 theme_override_font_sizes/font_size = 48
 text = "Jared"
 horizontal_alignment = 1
@@ -168,6 +173,7 @@ offset_right = -18.0
 offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_hnmit")
 theme_override_font_sizes/font_size = 54
 text = "I don't want to be this kind of animal anymore"
 autowrap_mode = 3

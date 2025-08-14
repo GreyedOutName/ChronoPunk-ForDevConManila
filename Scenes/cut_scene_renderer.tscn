@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dkaq0aij50rgt"]
+[gd_scene load_steps=4 format=3 uid="uid://dkaq0aij50rgt"]
 
 [ext_resource type="Script" uid="uid://dkvdoxyxo7trm" path="res://Scripts/cutscene_renderer.gd" id="1_4767y"]
 [ext_resource type="Texture2D" uid="uid://c040i6bjopxw5" path="res://Assets/UI_Assets/frame-1.png.png" id="2_hwqfc"]
+[ext_resource type="FontFile" uid="uid://bws52v08mj1ei" path="res://Assets/good timing bd.otf" id="3_pfurq"]
 
 [node name="CutSceneRenderer" type="Node2D" node_paths=PackedStringArray("TextLabel")]
 script = ExtResource("1_4767y")
@@ -38,6 +39,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("3_pfurq")
 theme_override_font_sizes/normal_font_size = 64
 bbcode_enabled = true
 text = "\"There was no one left for you, so you joined the military\""

@@ -83,6 +83,7 @@ z_index = -5
 position = Vector2(78, 53)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("8_6ll4n")
+metadata/_edit_lock_ = true
 
 [node name="Computer" parent="." instance=ExtResource("9_kylad")]
 position = Vector2(64, 133)

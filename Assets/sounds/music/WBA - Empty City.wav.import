@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dj06merh244bn"
+path="res://.godot/imported/WBA - Empty City.wav-db6b4777e22c75d484621cdbeb51c001.sample"
+
+[deps]
+
+source_file="res://Assets/sounds/music/WBA - Empty City.wav"
+dest_files=["res://.godot/imported/WBA - Empty City.wav-db6b4777e22c75d484621cdbeb51c001.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

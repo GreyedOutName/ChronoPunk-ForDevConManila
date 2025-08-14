@@ -25,6 +25,7 @@ func _level_load():
 
 func _on_invisible_button_button_down():
 	currentIndexInText += 1
+	MusicPlayer.play_sound("computer_dialogue")
 	
 	if currentIndexInText < dialogueFile.cutscene_text.size():		
 		TextLabel.text = dialogueFile.cutscene_text[currentIndexInText]

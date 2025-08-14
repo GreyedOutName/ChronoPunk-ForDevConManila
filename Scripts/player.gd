@@ -224,3 +224,15 @@ func _on_invis_button_button_up():
 	turnsLeftAsInvisible = 1
 	PlayerSprite.modulate.a = 0.5;
 	GlobalSignals.player_choosing_move.emit("Invisible for next 2 turns")
+
+
+func _on_move_button_mouse_entered() -> void:
+	MusicPlayer.play_sound("character_buttons")
+
+
+func _on_wait_button_mouse_entered() -> void:
+	MusicPlayer.play_sound("character_buttons")
+
+
+func _on_talk_button_mouse_entered() -> void:
+	MusicPlayer.play_sound("character_buttons")
