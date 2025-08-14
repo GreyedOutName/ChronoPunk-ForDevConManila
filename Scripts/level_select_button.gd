@@ -16,3 +16,7 @@ func _process(delta):
 	
 func _on_select_button_down():
 	GlobalSignals.level_select.emit(levelIndex)
+	MusicPlayer.play_song("PB - Data Shortcut")
+
+func _on_select_mouse_entered() -> void:
+	MusicPlayer.play_sound("button_hover")

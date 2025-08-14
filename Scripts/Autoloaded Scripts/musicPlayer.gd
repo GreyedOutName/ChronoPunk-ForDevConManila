@@ -31,3 +31,9 @@ func play_song(song_name) -> void:
 	dummy_player.play()
 	
 	fading = true
+
+func play_sound(sfx_name, pitch = 1) -> void:
+	dummy_player.stream = load("res://Assets/sounds/sfx/" + sfx_name + ".wav")
+	dummy_player.volume_db = -30
+	dummy_player.pitch_scale = pitch
+	dummy_player.play()

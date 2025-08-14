@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://crfsxflywoqsm" path="res://Scenes/delete_progress.gd" id="2_lx4vd"]
 [ext_resource type="Script" uid="uid://bx1w3srjlf7yv" path="res://Scripts/level_select_button.gd" id="2_nkys2"]
 [ext_resource type="FontFile" uid="uid://bws52v08mj1ei" path="res://Assets/good timing bd.otf" id="3_lx4vd"]
-[ext_resource type="Script" uid="uid://b0goxw7uxa1wj" path="res://Scenes/back_button.gd" id="4_2sqnl"]
+[ext_resource type="Script" uid="uid://cs5jdjvhe4nb0" path="res://Scripts/back_button.gd" id="4_2sqnl"]
 
 [node name="LevelSelect" type="Node2D"]
 
@@ -239,9 +239,16 @@ text = "Back"
 script = ExtResource("4_2sqnl")
 
 [connection signal="button_down" from="CanvasLayer/MarginContainer/HBoxContainer/LevelInfo/Select" to="CanvasLayer/MarginContainer/HBoxContainer/LevelInfo" method="_on_select_button_down"]
+[connection signal="mouse_entered" from="CanvasLayer/MarginContainer/HBoxContainer/LevelInfo/Select" to="CanvasLayer/MarginContainer/HBoxContainer/LevelInfo" method="_on_select_mouse_entered"]
 [connection signal="button_down" from="CanvasLayer/MarginContainer/HBoxContainer/LevelInfo2/Select" to="CanvasLayer/MarginContainer/HBoxContainer/LevelInfo2" method="_on_select_button_down"]
+[connection signal="mouse_entered" from="CanvasLayer/MarginContainer/HBoxContainer/LevelInfo2/Select" to="CanvasLayer/MarginContainer/HBoxContainer/LevelInfo2" method="_on_select_mouse_entered"]
 [connection signal="button_down" from="CanvasLayer/MarginContainer/HBoxContainer/LevelInfo3/Select" to="CanvasLayer/MarginContainer/HBoxContainer/LevelInfo3" method="_on_select_button_down"]
+[connection signal="mouse_entered" from="CanvasLayer/MarginContainer/HBoxContainer/LevelInfo3/Select" to="CanvasLayer/MarginContainer/HBoxContainer/LevelInfo3" method="_on_select_mouse_entered"]
 [connection signal="button_down" from="CanvasLayer/MarginContainer/HBoxContainer/LevelInfo4/Select" to="CanvasLayer/MarginContainer/HBoxContainer/LevelInfo4" method="_on_select_button_down"]
+[connection signal="mouse_entered" from="CanvasLayer/MarginContainer/HBoxContainer/LevelInfo4/Select" to="CanvasLayer/MarginContainer/HBoxContainer/LevelInfo4" method="_on_select_mouse_entered"]
 [connection signal="button_down" from="CanvasLayer/MarginContainer/HBoxContainer/LevelInfo5/Select" to="CanvasLayer/MarginContainer/HBoxContainer/LevelInfo5" method="_on_select_button_down"]
+[connection signal="mouse_entered" from="CanvasLayer/MarginContainer/HBoxContainer/LevelInfo5/Select" to="CanvasLayer/MarginContainer/HBoxContainer/LevelInfo5" method="_on_select_mouse_entered"]
 [connection signal="button_down" from="CanvasLayer/MarginContainer2/HBoxContainer/Delete Progress" to="CanvasLayer/MarginContainer2/HBoxContainer/Delete Progress" method="_on_button_down"]
+[connection signal="mouse_entered" from="CanvasLayer/MarginContainer2/HBoxContainer/Delete Progress" to="CanvasLayer/MarginContainer2/HBoxContainer/Delete Progress" method="_on_mouse_entered"]
 [connection signal="button_down" from="CanvasLayer/BackButton" to="CanvasLayer/BackButton" method="_on_button_down"]
+[connection signal="mouse_entered" from="CanvasLayer/BackButton" to="CanvasLayer/BackButton" method="_on_mouse_entered"]
