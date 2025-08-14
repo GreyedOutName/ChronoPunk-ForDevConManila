@@ -4,6 +4,10 @@
 
 [resource]
 script = ExtResource("1_v5vld")
-dialogueText = Dictionary[String, Array]({})
-dialogueLabel = ""
+dialogueText = Dictionary[String, Array]({
+"1st": ["*You find it unlocked*", "What can you expect to see among the items...", "Held by your fated enemies?", "Weapons? Chemical Dangers?", "No. It's memories.", "Pictures of loved ones-", "The dead- The far-away-", "Memories. A reminder of their sacrifices.", "And of your sins.", "We will all be memories soon.", {
+"2nd": "*Leave in Silence*"
+}]
+})
+dialogueLabel = "Locker"
 metadata/_custom_type_script = "uid://cprybsuenpluj"

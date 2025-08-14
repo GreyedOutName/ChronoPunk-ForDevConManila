@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dkrdc5brulv2j"]
+[gd_scene load_steps=19 format=3 uid="uid://dkrdc5brulv2j"]
 
 [ext_resource type="PackedScene" uid="uid://w5fhv5wx7ee8" path="res://objects/camera_container.tscn" id="1_cp0jt"]
 [ext_resource type="PackedScene" uid="uid://dsk0qglenlrlm" path="res://objects/objective_completion_controller.tscn" id="2_p6pjf"]
@@ -12,18 +12,55 @@
 [ext_resource type="PackedScene" uid="uid://p36wg4vd3anl" path="res://objects/locker.tscn" id="9_p6pjf"]
 [ext_resource type="PackedScene" uid="uid://8l3v46h0oi1l" path="res://objects/enemy_3.tscn" id="10_ncjpd"]
 [ext_resource type="PackedScene" uid="uid://k6h23knn2yl0" path="res://objects/enemy_2.tscn" id="11_ffsx8"]
+[ext_resource type="Script" uid="uid://cprybsuenpluj" path="res://Scripts/Resources Scripts/dialogue_resource_script.gd" id="11_ms3ee"]
 [ext_resource type="PackedScene" uid="uid://sn7vend6b6yo" path="res://objects/talkable_npc3.tscn" id="12_dl4b5"]
 [ext_resource type="PackedScene" uid="uid://de0yxv1ohxh12" path="res://objects/computer.tscn" id="14_dl4b5"]
+
+[sub_resource type="Resource" id="Resource_ktnig"]
+script = ExtResource("11_ms3ee")
+dialogueText = Dictionary[String, Array]({
+"1st": ["*You find it unlocked*", "What can you expect to see among the items...", "Held by your fated enemies?", "Weapons? Chemical Dangers?", "No. It's memories.", "Pictures of loved ones-", "The dead- The far-away-", "Memories. A reminder of their sacrifices.", "And of your sins.", "We will all be memories soon.", {
+"2nd": "*Leave in Silence*"
+}]
+})
+dialogueLabel = "Locker"
+metadata/_custom_type_script = "uid://cprybsuenpluj"
+
+[sub_resource type="Resource" id="Resource_nfsas"]
+script = ExtResource("11_ms3ee")
+dialogueText = Dictionary[String, Array]({
+"1st": ["Leaving us so soon?", "Come, talk with me for a while.", "You are an interesting specimen, indulge me.", {
+"2nd": "Seriously? What do have to talk about?"
+}],
+"2nd": ["About fate. And how you're wasting your time.", {
+"3rd": "How so, if I'm succeeding everytime."
+}],
+"3rd": ["Are you really suceeding?", "How many times have you chased after this file?", "Seems like you're just chasing fate.", "Sooner or later, it will all come crashing down.", "We all have our time alloted to us.", "Even with your abuse of time.", "Fear the inevitable.", "Or repent.", "Now begone!", "Time Fascist Pig."]
+})
+dialogueLabel = "Aresha"
+metadata/_custom_type_script = "uid://cprybsuenpluj"
+
+[sub_resource type="Resource" id="Resource_t5kwq"]
+script = ExtResource("11_ms3ee")
+dialogueText = Dictionary[String, Array]({
+"1st": ["*The Computer is already waiting for you*", {
+"2nd": "*Tear a hole onto fate itself*"
+}],
+"2nd": ["Someday, we'll pay.", "The sword of Damocles will fall."]
+})
+dialogueLabel = "Computer"
+metadata/_custom_type_script = "uid://cprybsuenpluj"
 
 [node name="Level3" type="Node2D"]
 
 [node name="CameraContainer" parent="." instance=ExtResource("1_cp0jt")]
 
-[node name="ObjectiveCompletionController" parent="." instance=ExtResource("2_p6pjf")]
+[node name="ObjectiveCompletionController" parent="." node_paths=PackedStringArray("thePlayer") instance=ExtResource("2_p6pjf")]
 script = ExtResource("3_ffsx8")
+thePlayer = NodePath("../Player")
 
 [node name="PathController" parent="." instance=ExtResource("3_m7vvj")]
-connections = Array[PackedInt32Array]([PackedInt32Array(0, 1), PackedInt32Array(1, 2), PackedInt32Array(3, 1), PackedInt32Array(3, 4), PackedInt32Array(4, 5), PackedInt32Array(5, 15), PackedInt32Array(15, 16), PackedInt32Array(16, 17), PackedInt32Array(16, 18), PackedInt32Array(18, 11), PackedInt32Array(11, 12), PackedInt32Array(12, 13), PackedInt32Array(12, 14), PackedInt32Array(11, 10), PackedInt32Array(10, 9), PackedInt32Array(10, 8), PackedInt32Array(8, 7), PackedInt32Array(8, 4), PackedInt32Array(7, 6), PackedInt32Array(4, 6), PackedInt32Array(7, 9)])
+connections = Array[PackedInt32Array]([PackedInt32Array(0, 1), PackedInt32Array(1, 2), PackedInt32Array(3, 1), PackedInt32Array(3, 4), PackedInt32Array(4, 5), PackedInt32Array(5, 15), PackedInt32Array(15, 16), PackedInt32Array(16, 17), PackedInt32Array(16, 18), PackedInt32Array(18, 11), PackedInt32Array(11, 12), PackedInt32Array(12, 13), PackedInt32Array(12, 14), PackedInt32Array(11, 10), PackedInt32Array(10, 9), PackedInt32Array(10, 8), PackedInt32Array(8, 7), PackedInt32Array(8, 4), PackedInt32Array(7, 6), PackedInt32Array(4, 6), PackedInt32Array(7, 9), PackedInt32Array(15, 8)])
 
 [node name="Player" parent="." instance=ExtResource("4_kg31f")]
 z_index = 1
@@ -89,7 +126,6 @@ position = Vector2(96, -107)
 position = Vector2(145, -54)
 
 [node name="CanvasLayer" parent="." instance=ExtResource("6_ffsx8")]
-visible = false
 
 [node name="LevelCompleteArea" parent="." instance=ExtResource("7_dl4b5")]
 position = Vector2(145, 117)
@@ -101,18 +137,25 @@ texture = ExtResource("8_cp0jt")
 
 [node name="Locker" parent="." instance=ExtResource("9_p6pjf")]
 position = Vector2(96, -109)
+dialogueResourceRef = SubResource("Resource_ktnig")
 
 [node name="Enemy3" parent="." instance=ExtResource("10_ncjpd")]
 position = Vector2(145, -55)
+PathArray = Array[int]([18, 16, 15, 8, 7, 6])
 
 [node name="enemy2" parent="." instance=ExtResource("11_ffsx8")]
 position = Vector2(145, 32)
+PathArray = Array[int]([12, 11, 10, 8])
 
 [node name="Enemy4" parent="." instance=ExtResource("10_ncjpd")]
 position = Vector2(-23, 61)
+PathArray = Array[int]([6, 4, 3, 1, 0])
 
 [node name="TalkableNPC" parent="." instance=ExtResource("12_dl4b5")]
 position = Vector2(200, 20)
+dialogueResourceRef = SubResource("Resource_nfsas")
+PathArray = Array[int]([13])
 
 [node name="Computer" parent="." instance=ExtResource("14_dl4b5")]
 position = Vector2(96, 57)
+dialogueResourceRef = SubResource("Resource_t5kwq")

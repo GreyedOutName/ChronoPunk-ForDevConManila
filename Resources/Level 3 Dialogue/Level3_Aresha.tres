@@ -4,6 +4,14 @@
 
 [resource]
 script = ExtResource("1_rgp7k")
-dialogueText = Dictionary[String, Array]({})
-dialogueLabel = ""
+dialogueText = Dictionary[String, Array]({
+"1st": ["Leaving us so soon?", "Come, talk with me for a while.", "You are an interesting specimen, indulge me.", {
+"2nd": "Seriously? What do have to talk about?"
+}],
+"2nd": ["About fate. And how you're wasting your time.", {
+"3rd": "How so, if I'm succeeding everytime."
+}],
+"3rd": ["Are you really suceeding?", "How many times have you chased after this file?", "Seems like you're just chasing fate.", "Sooner or later, it will all come crashing down.", "We all have our time alloted to us.", "Even with your abuse of time.", "Fear the inevitable.", "Or repent.", "Now begone!", "Time Fascist Pig."]
+})
+dialogueLabel = "Aresha"
 metadata/_custom_type_script = "uid://cprybsuenpluj"

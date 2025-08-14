@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="cutscene_text" load_steps=2 format=3 uid="uid://b17mj1r77r05a"]
+
+[ext_resource type="Script" uid="uid://b7ljve8dfj2ij" path="res://Scripts/Resources Scripts/cutsceneText.gd" id="1_tabl5"]
+
+[resource]
+script = ExtResource("1_tabl5")
+cutscene_text = Array[String](["After the last mission you finally got your rest.", "Much needed after all that you've done.", "But...you feel restless.", "As if you're dreaming while wide awake.", "Suddenly. A call.", "\"Go to us. Come Alone\"\"", "\"This is your final chance.\"\"", "It was the resistance.", "You ponder if you should go."])
+metadata/_custom_type_script = "uid://b7ljve8dfj2ij"

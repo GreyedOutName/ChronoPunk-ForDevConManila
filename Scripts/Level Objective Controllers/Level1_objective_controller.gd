@@ -2,10 +2,6 @@ extends Node
 
 @export var thePlayer:Player
 
-signal player_used_distractor
-signal player_used_teleporter
-signal player_used_invisibility
-
 var notTalkedToJaredYet = true;
 var notUsedComputerYet = true;
 

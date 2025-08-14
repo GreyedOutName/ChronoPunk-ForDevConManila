@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="dialogue_resource" load_steps=2 format=3 uid="uid://une453fvhylk"]
+
+[ext_resource type="Script" uid="uid://cprybsuenpluj" path="res://Scripts/Resources Scripts/dialogue_resource_script.gd" id="1_dyhus"]
+
+[resource]
+script = ExtResource("1_dyhus")
+dialogueText = Dictionary[String, Array]({
+"1st": ["Speak with the leader"]
+})
+dialogueLabel = "Resistance Member"
+metadata/_custom_type_script = "uid://cprybsuenpluj"

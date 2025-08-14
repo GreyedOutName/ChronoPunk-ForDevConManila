@@ -4,6 +4,11 @@
 
 [resource]
 script = ExtResource("1_q3jow")
-dialogueText = Dictionary[String, Array]({})
+dialogueText = Dictionary[String, Array]({
+"1st": ["*The Computer is already waiting for you*", {
+"2nd": "*Tear a hole onto fate itself*"
+}],
+"2nd": ["Someday, we'll pay.", "The sword of Damocles will fall."]
+})
 dialogueLabel = ""
 metadata/_custom_type_script = "uid://cprybsuenpluj"

@@ -144,35 +144,6 @@ text = "Score: 000"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LevelInfo5" type="VBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer" node_paths=PackedStringArray("scoreLabel")]
-layout_mode = 2
-theme_override_constants/separation = 30
-script = ExtResource("2_nkys2")
-levelIndex = 5
-scoreLabel = NodePath("ScoreCounter")
-
-[node name="LevelTitle" type="Label" parent="CanvasLayer/MarginContainer/HBoxContainer/LevelInfo5"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "Level 5:
-To Here Knows When"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Select" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer/LevelInfo5"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 50
-text = "Select"
-
-[node name="ScoreCounter" type="Label" parent="CanvasLayer/MarginContainer/HBoxContainer/LevelInfo5"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "Score: 000"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer"]
 offset_left = 66.9999
 offset_top = 963.0
@@ -203,5 +174,4 @@ color = Color(0.117647, 0.219608, 0.203922, 1)
 [connection signal="button_down" from="CanvasLayer/MarginContainer/HBoxContainer/LevelInfo2/Select" to="CanvasLayer/MarginContainer/HBoxContainer/LevelInfo2" method="_on_select_button_down"]
 [connection signal="button_down" from="CanvasLayer/MarginContainer/HBoxContainer/LevelInfo3/Select" to="CanvasLayer/MarginContainer/HBoxContainer/LevelInfo3" method="_on_select_button_down"]
 [connection signal="button_down" from="CanvasLayer/MarginContainer/HBoxContainer/LevelInfo4/Select" to="CanvasLayer/MarginContainer/HBoxContainer/LevelInfo4" method="_on_select_button_down"]
-[connection signal="button_down" from="CanvasLayer/MarginContainer/HBoxContainer/LevelInfo5/Select" to="CanvasLayer/MarginContainer/HBoxContainer/LevelInfo5" method="_on_select_button_down"]
 [connection signal="button_down" from="CanvasLayer/MarginContainer2/HBoxContainer/Delete Progress" to="CanvasLayer/MarginContainer2/HBoxContainer/Delete Progress" method="_on_button_down"]

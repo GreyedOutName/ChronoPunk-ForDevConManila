@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="dialogue_resource" load_steps=2 format=3 uid="uid://boit8f00o5cue"]
+
+[ext_resource type="Script" uid="uid://cprybsuenpluj" path="res://Scripts/Resources Scripts/dialogue_resource_script.gd" id="1_qo3gf"]
+
+[resource]
+script = ExtResource("1_qo3gf")
+dialogueText = Dictionary[String, Array]({
+"1st": ["You've finally come.", "I trust my followers were cordial?", {
+"2nd": "Why did you let me in here?"
+}],
+"2nd": ["Why? Why because you are a lost lamb.", "You haven't considered what you've done, what you've been doing.", "Haven't you?", "Born in City A-64, joined the military as soon as you've done the bare minimum of education.", {
+"3rd": "How did you know that?"
+}],
+"3rd": ["A better question is why?", "Why do so much for a government, who strangles, who tears down", "Who made time stay still for so long?", "Who made everyone so miserable and stagnant?", "Why do so much for that? And at such a young age?", {
+"4th": "Because that's what everyone's been doing."
+}],
+"4th": ["Ah. And I bet you'll say that you were only following orders.", "But no matter. In my flock, time does not stand still.", "Here, change is possible.", "Why did you come here?", {
+"5th": "Because...you invited me?"
+}],
+"5th": ["And why follow?", "This could have been a trap.", "We might hold a grudge and want to have you killed.", "Why follow?", {
+"6th": "Because...I'm tired."
+}],
+"6th": ["Then...you're in good company, my lad.", "Everyone is tired.", "Working, studying, struggling to survive.", "Yet they stay on top, lazy in their ivory towers.", "Hardworking only in their cruelty- I am so tired.", "But there is work yet to be done.", "Holy work. Important work.", "Are you in?", {
+"7th": "I'm in."
+}],
+"7th": ["Then welcome to the rebellion.", "There's much work to be done.", "But doesn't it feel good to finally have the fruits of your labour?", "Go. We'll talk again soon.", "Thank yourself, for being here."]
+})
+dialogueLabel = "The Leader"
+metadata/_custom_type_script = "uid://cprybsuenpluj"

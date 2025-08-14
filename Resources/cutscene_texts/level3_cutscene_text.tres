@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="cutscene_text" load_steps=2 format=3 uid="uid://bxfcpwm4igoi1"]
+
+[ext_resource type="Script" uid="uid://b7ljve8dfj2ij" path="res://Scripts/Resources Scripts/cutsceneText.gd" id="1_gojc7"]
+
+[resource]
+script = ExtResource("1_gojc7")
+cutscene_text = Array[String](["Another call. Another suiting up.", "How many times have you been doing this?", "It feels repetive.", "You want it to be over soon."])
+metadata/_custom_type_script = "uid://b7ljve8dfj2ij"

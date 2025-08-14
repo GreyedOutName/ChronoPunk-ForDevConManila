@@ -1,0 +1,146 @@
+[gd_scene load_steps=16 format=3 uid="uid://4rs82mhe02hp"]
+
+[ext_resource type="PackedScene" uid="uid://w5fhv5wx7ee8" path="res://objects/camera_container.tscn" id="1_2brj3"]
+[ext_resource type="PackedScene" uid="uid://dsk0qglenlrlm" path="res://objects/objective_completion_controller.tscn" id="2_uw8xp"]
+[ext_resource type="Script" uid="uid://ckq4tj2ga3mu6" path="res://Scripts/Level Objective Controllers/Level4_objective_controller.gd" id="3_2brj3"]
+[ext_resource type="PackedScene" uid="uid://0cq0wjutmxpf" path="res://objects/path_controller.tscn" id="4_nqeob"]
+[ext_resource type="PackedScene" uid="uid://cmvmi1eqfgt6a" path="res://objects/player.tscn" id="5_jorw0"]
+[ext_resource type="PackedScene" uid="uid://bd5yeg2sylr80" path="res://objects/grid_point.tscn" id="6_4uhwj"]
+[ext_resource type="PackedScene" uid="uid://yexucs5j3i0b" path="res://Scenes/GUI.tscn" id="7_g7k2o"]
+[ext_resource type="PackedScene" uid="uid://bt8mqo110x2f0" path="res://objects/level_complete_area.tscn" id="8_i2yhf"]
+[ext_resource type="Texture2D" uid="uid://betwprdin77bi" path="res://Assets/level_backgrounds/map4.png" id="9_xgp81"]
+[ext_resource type="PackedScene" uid="uid://dfvup0jxvyxqy" path="res://objects/talkable_npc2.tscn" id="10_qxjbv"]
+[ext_resource type="Resource" uid="uid://une453fvhylk" path="res://Resources/Level 4 Dialogue/level4_normal_npc.tres" id="11_iv3jq"]
+[ext_resource type="PackedScene" uid="uid://dy8dwjkrh8tpm" path="res://objects/talkable_npc4.tscn" id="13_edi5u"]
+[ext_resource type="Resource" uid="uid://boit8f00o5cue" path="res://Resources/Level 4 Dialogue/Level4_leader.tres" id="14_ra572"]
+[ext_resource type="PackedScene" uid="uid://sn7vend6b6yo" path="res://objects/talkable_npc3.tscn" id="14_whkq8"]
+
+[sub_resource type="GDScript" id="GDScript_xgp81"]
+script/source = "extends Node2D
+
+var isObjectiveCompleted:bool = false;
+
+func _ready():
+	GlobalSignals.main_objective_completed.connect(_main_objective_completed)
+
+func _on_area_2d_area_entered(area):
+	var who = area.get_parent()
+	if who.is_in_group(\"player\") and isObjectiveCompleted:
+		GlobalSignals.level_select.emit(5)
+	elif who.is_in_group(\"player\") and !isObjectiveCompleted:
+		GlobalSignals.player_choosing_move.emit(\"Complete Objective First!\")
+		
+func _main_objective_completed():
+	isObjectiveCompleted = true;
+"
+
+[node name="Level4" type="Node2D"]
+
+[node name="CameraContainer" parent="." instance=ExtResource("1_2brj3")]
+
+[node name="ObjectiveCompletionController" parent="." node_paths=PackedStringArray("thePlayer") instance=ExtResource("2_uw8xp")]
+script = ExtResource("3_2brj3")
+thePlayer = NodePath("../Player")
+
+[node name="PathController" parent="." instance=ExtResource("4_nqeob")]
+connections = Array[PackedInt32Array]([PackedInt32Array(0, 1), PackedInt32Array(1, 2), PackedInt32Array(2, 3), PackedInt32Array(3, 4), PackedInt32Array(1, 5), PackedInt32Array(5, 11), PackedInt32Array(11, 12), PackedInt32Array(5, 6), PackedInt32Array(2, 7), PackedInt32Array(7, 10), PackedInt32Array(11, 10), PackedInt32Array(10, 13), PackedInt32Array(13, 14), PackedInt32Array(3, 8), PackedInt32Array(3, 4), PackedInt32Array(8, 9), PackedInt32Array(8, 13), PackedInt32Array(10, 15), PackedInt32Array(15, 16), PackedInt32Array(15, 17), PackedInt32Array(18, 15)])
+
+[node name="Player" parent="." instance=ExtResource("5_jorw0")]
+z_index = 1
+position = Vector2(-146, 174)
+
+[node name="pointArray" type="Node" parent="."]
+
+[node name="point0" parent="pointArray" instance=ExtResource("6_4uhwj")]
+position = Vector2(-146, 175)
+
+[node name="point1" parent="pointArray" instance=ExtResource("6_4uhwj")]
+position = Vector2(-66, 175)
+
+[node name="point2" parent="pointArray" instance=ExtResource("6_4uhwj")]
+position = Vector2(0, 175)
+
+[node name="point3" parent="pointArray" instance=ExtResource("6_4uhwj")]
+position = Vector2(66, 175)
+
+[node name="point4" parent="pointArray" instance=ExtResource("6_4uhwj")]
+position = Vector2(149, 175)
+
+[node name="point5" parent="pointArray" instance=ExtResource("6_4uhwj")]
+position = Vector2(-66, 78)
+
+[node name="point6" parent="pointArray" instance=ExtResource("6_4uhwj")]
+position = Vector2(-153, 79)
+
+[node name="point7" parent="pointArray" instance=ExtResource("6_4uhwj")]
+position = Vector2(0, 79)
+
+[node name="point8" parent="pointArray" instance=ExtResource("6_4uhwj")]
+position = Vector2(65, 79)
+
+[node name="point9" parent="pointArray" instance=ExtResource("6_4uhwj")]
+position = Vector2(148, 79)
+
+[node name="point10" parent="pointArray" instance=ExtResource("6_4uhwj")]
+position = Vector2(0, 1)
+
+[node name="point11" parent="pointArray" instance=ExtResource("6_4uhwj")]
+position = Vector2(-66, 0)
+
+[node name="point12" parent="pointArray" instance=ExtResource("6_4uhwj")]
+position = Vector2(-153, 0)
+
+[node name="point13" parent="pointArray" instance=ExtResource("6_4uhwj")]
+position = Vector2(64, 0)
+
+[node name="point14" parent="pointArray" instance=ExtResource("6_4uhwj")]
+position = Vector2(148, 0)
+
+[node name="point15" parent="pointArray" instance=ExtResource("6_4uhwj")]
+position = Vector2(-1, -84)
+
+[node name="point16" parent="pointArray" instance=ExtResource("6_4uhwj")]
+position = Vector2(-55, -84)
+
+[node name="point17" parent="pointArray" instance=ExtResource("6_4uhwj")]
+position = Vector2(51, -84)
+
+[node name="point18" parent="pointArray" instance=ExtResource("6_4uhwj")]
+position = Vector2(-1, -176)
+
+[node name="CanvasLayer" parent="." instance=ExtResource("7_g7k2o")]
+
+[node name="LevelCompleteArea" parent="." instance=ExtResource("8_i2yhf")]
+position = Vector2(-55, -84)
+script = SubResource("GDScript_xgp81")
+
+[node name="Map4" type="Sprite2D" parent="."]
+z_index = -10
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("9_xgp81")
+
+[node name="TalkableNPC" parent="." instance=ExtResource("10_qxjbv")]
+position = Vector2(149, 162)
+dialogueResourceRef = ExtResource("11_iv3jq")
+
+[node name="TalkableNPC2" parent="." instance=ExtResource("14_whkq8")]
+position = Vector2(148, 66)
+dialogueResourceRef = ExtResource("11_iv3jq")
+
+[node name="TalkableNPC3" parent="." instance=ExtResource("10_qxjbv")]
+position = Vector2(-153, 67)
+dialogueResourceRef = ExtResource("11_iv3jq")
+
+[node name="TalkableNPC4" parent="." instance=ExtResource("14_whkq8")]
+position = Vector2(-153, -13)
+dialogueResourceRef = ExtResource("11_iv3jq")
+
+[node name="TalkableNPC5" parent="." instance=ExtResource("10_qxjbv")]
+position = Vector2(148, -13)
+dialogueResourceRef = ExtResource("11_iv3jq")
+
+[node name="LeaderNPC" parent="." instance=ExtResource("13_edi5u")]
+position = Vector2(-1, -189)
+dialogueResourceRef = ExtResource("14_ra572")
+
+[editable path="LevelCompleteArea"]

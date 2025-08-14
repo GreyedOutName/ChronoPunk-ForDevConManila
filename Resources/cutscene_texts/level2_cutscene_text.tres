@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="cutscene_text" load_steps=2 format=3 uid="uid://c7jv2sd15aiom"]
+
+[ext_resource type="Script" uid="uid://b7ljve8dfj2ij" path="res://Scripts/Resources Scripts/cutsceneText.gd" id="1_fr1xg"]
+
+[resource]
+script = ExtResource("1_fr1xg")
+cutscene_text = Array[String](["Another day at work.", "This ain't no deskjob however.", "Your soul would have been lighter if it was.", "Up and at em, sonny.", "There's no rest for the wicked."])
+metadata/_custom_type_script = "uid://b7ljve8dfj2ij"

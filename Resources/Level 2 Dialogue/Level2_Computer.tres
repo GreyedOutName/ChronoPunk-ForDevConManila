@@ -1,11 +1,14 @@
-[gd_resource type="Resource" script_class="dialogue_resource" load_steps=2 format=3 uid="uid://bwcsunsjwcqws"]
+[gd_resource type="Resource" script_class="dialogue_resource" load_steps=2 format=3 uid="uid://dbhjvvlfrwwyk"]
 
 [ext_resource type="Script" uid="uid://cprybsuenpluj" path="res://Scripts/Resources Scripts/dialogue_resource_script.gd" id="1_n32og"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_n32og")
 dialogueText = Dictionary[String, Array]({
-"1st": ["*The Computer beeps to life in front of you*", {}],
+"1st": ["*The Computer beeps to life in front of you*", {
+"2nd": "Action: Delete the files"
+}],
 "2nd": ["You've done this before.", "Hopefully it would be the last."]
 })
 dialogueLabel = "Computer"

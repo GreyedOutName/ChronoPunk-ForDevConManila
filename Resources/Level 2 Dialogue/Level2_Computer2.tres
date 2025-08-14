@@ -3,10 +3,13 @@
 [ext_resource type="Script" uid="uid://cprybsuenpluj" path="res://Scripts/Resources Scripts/dialogue_resource_script.gd" id="1_5nuav"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_5nuav")
 dialogueText = Dictionary[String, Array]({
-"1st": ["It good that you came here.", "Files on the resistance.", "Leaders- bases- hideouts-", "You didn't take any chances.", "You immediately sent the info remote back to command.", {}],
-"2nd": ["You gave yourself a mental pat on the back.", "For your diligence and loyalty to the state.", "May your know no rest."]
+"1st": ["It good that you came here.", "Files on the resistance.", "Leaders- bases- hideouts-", "You didn't take any chances.", "You immediately sent the info remotely back to command.", {
+"2nd": "Action: Leave and leave with no trace."
+}],
+"2nd": ["You gave yourself a mental pat on the back.", "For your diligence and loyalty to the state.", "May you know no rest."]
 })
 dialogueLabel = "Computer 2"
 metadata/_custom_type_script = "uid://cprybsuenpluj"

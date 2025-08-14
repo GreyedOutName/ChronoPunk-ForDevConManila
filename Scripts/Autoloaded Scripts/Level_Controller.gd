@@ -2,10 +2,9 @@ extends Node
 
 var levelSceneRef:Dictionary = {
 	1:"res://Scenes/Level1.tscn",
-	2:"",
-	3:"",
-	4:"",
-	5:"",
+	2:"res://Scenes/Level2.tscn",
+	3:"res://Scenes/Level3.tscn",
+	4:"res://Scenes/Level4.tscn",
 }
 
 var levelScore:Dictionary = {
@@ -13,15 +12,13 @@ var levelScore:Dictionary = {
 	2:null,
 	3:null,
 	4:null,
-	5:null,
 }
 
 var levelTurnLimit:Dictionary = {
 	1:14,
-	2:10,
-	3:10,
-	4:10,
-	5:10,
+	2:20,
+	3:22,
+	4:20,
 }
 
 var cutSceneIndex:int;
@@ -47,6 +44,7 @@ func _ready():
 		levelScore = fixed
 	
 func _level_repeat():
+	Objectives.score = 0; #resets score counter
 	get_tree().reload_current_scene()
 
 func _level_complete():
@@ -56,7 +54,7 @@ func _level_complete():
 	Objectives.score = 0; #resets score counter
 	
 	#code that unlocks the next level for level select
-	if (levelCurrentlyIn+1)<6:
+	if (levelCurrentlyIn+1)<5:
 		levelScore[levelCurrentlyIn+1] = 0; #turns score from null into 0, making it "unlocked"
 		
 	SaveManager.save_game_data(levelScore)
@@ -77,5 +75,4 @@ func _progress_deleted():
 	2:null,
 	3:null,
 	4:null,
-	5:null,
 }

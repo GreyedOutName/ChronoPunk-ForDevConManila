@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="cutscene_text" load_steps=2 format=3 uid="uid://csgrfc1lyu5pf"]
+
+[ext_resource type="Script" uid="uid://b7ljve8dfj2ij" path="res://Scripts/Resources Scripts/cutsceneText.gd" id="1_sq3fk"]
+
+[resource]
+script = ExtResource("1_sq3fk")
+cutscene_text = Array[String](["You've finally woken up.", "It's time to do what you should have been doing.", "...", "The End."])
+metadata/_custom_type_script = "uid://b7ljve8dfj2ij"
