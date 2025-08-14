@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cmvmi1eqfgt6a"]
+[gd_scene load_steps=11 format=3 uid="uid://cmvmi1eqfgt6a"]
 
 [ext_resource type="Script" uid="uid://d3fex2qvfes6h" path="res://Scripts/player.gd" id="1_eqqp1"]
 [ext_resource type="Texture2D" uid="uid://d25vcubs5vi1k" path="res://Assets/characters/player_front.png" id="2_nmc1l"]
+[ext_resource type="FontFile" uid="uid://bws52v08mj1ei" path="res://Assets/good timing bd.otf" id="3_3rfka"]
 [ext_resource type="Texture2D" uid="uid://dwjd0343rl1ey" path="res://Assets/UI_Assets/windowUI.png" id="3_uxov2"]
 [ext_resource type="Script" uid="uid://ho6m2bl8vh4b" path="res://Scripts/number_label.gd" id="4_nmc1l"]
 [ext_resource type="Texture2D" uid="uid://dorvbe1wok5h6" path="res://Assets/UI_Assets/Distractor-Icon.png" id="5_f46kd"]
@@ -88,13 +89,14 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 2.53
-offset_top = 4.045
-offset_right = 125.53
-offset_bottom = 57.045
+offset_left = -0.32258
+offset_top = 2.90324
+offset_right = 151.677
+offset_bottom = 55.9032
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("3_3rfka")
 theme_override_font_sizes/font_size = 60
 text = "MOVE"
 horizontal_alignment = 1
@@ -119,6 +121,7 @@ offset_bottom = 57.045
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("3_3rfka")
 theme_override_font_sizes/font_size = 60
 text = "WAIT"
 horizontal_alignment = 1
@@ -145,6 +148,7 @@ offset_bottom = 57.045
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("3_3rfka")
 theme_override_font_sizes/font_size = 60
 text = "TALK"
 horizontal_alignment = 1

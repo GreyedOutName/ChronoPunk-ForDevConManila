@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://bws52v08mj1ei" path="res://Assets/good timing bd.otf" id="3_frfto"]
 
 [node name="DialogueChoiceContainer" type="NinePatchRect" node_paths=PackedStringArray("button")]
-custom_minimum_size = Vector2(800, 100)
+custom_minimum_size = Vector2(1200, 100)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
