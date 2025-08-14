@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://6qjmwa5iamrs"]
+[gd_scene load_steps=2 format=3 uid="uid://6qjmwa5iamrs"]
+
+[ext_resource type="FontFile" uid="uid://bws52v08mj1ei" path="res://Assets/good timing bd.otf" id="1_gx2s4"]
 
 [node name="Objectives" type="RichTextLabel"]
 custom_minimum_size = Vector2(110, 600)
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_gx2s4")
 theme_override_font_sizes/normal_font_size = 250
 bbcode_enabled = true
 text = " - End"
