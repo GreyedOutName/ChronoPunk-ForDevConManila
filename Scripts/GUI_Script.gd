@@ -23,6 +23,7 @@ func _ready():
 	GlobalSignals.choose_dialogue_response.connect(_choose_dialogue)
 	GlobalSignals.change_dialogue.connect(_change_dialogue)
 	GlobalSignals.objective_completed.connect(_objective_completed)
+	GlobalSignals.level_complete.connect(_level_complete)
 	
 	turnIndicator.text = ("Turn: " + str(TurnController.turn_number)) 
 	
@@ -74,6 +75,9 @@ func _objective_completed(levelIndex:String,objectiveIndex:int,score:int):
 	var arrayOfText:Array[Node] = GameObjectives.get_children()
 	var newText = "[color=#FF0000][s]"+arrayOfText[objectiveIndex].text+"[/s][/color]"
 	arrayOfText[objectiveIndex].text = newText
+	
+func _level_complete(levelnum:int):
+	visible = false;
 	
 func _on_invisible_button_button_up():
 	GlobalSignals.continue_dialogue.emit()

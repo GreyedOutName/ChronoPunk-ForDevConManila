@@ -31,4 +31,4 @@ func _level_complete():
 	if v_teleporter==1:
 		GlobalSignals.objective_completed.emit("Level2",4,100)
 		
-	GlobalSignals.objective_completed.emit("Level1",1,100)
+	GlobalSignals.objective_completed.emit("Level2",1,100)

@@ -199,7 +199,6 @@ size_flags_vertical = 4
 
 [node name="ReminderText" type="Label" parent="."]
 visible = false
-modulate = Color(0, 0.560396, 0.494915, 1)
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
@@ -208,6 +207,10 @@ offset_top = 220.0
 offset_bottom = 243.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.375605, 0.200561, 0.0780762, 1)
+theme_override_colors/font_outline_color = Color(0, 0.533976, 0.467736, 1)
+theme_override_constants/outline_size = 11
+theme_override_fonts/font = ExtResource("3_hnmit")
 theme_override_font_sizes/font_size = 50
 text = "Tutorial Messages Appear Here"
 horizontal_alignment = 1

@@ -21,6 +21,7 @@ func checkForEnemies():
 				whoisthis.distracted(global_position)
 				
 func _new_turn():
+	await get_tree().create_timer(1.0).timeout 
 	checkForEnemies()
 
 func _ready():

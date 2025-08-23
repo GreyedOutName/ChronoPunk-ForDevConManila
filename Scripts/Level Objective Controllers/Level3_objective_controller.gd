@@ -27,6 +27,7 @@ func _check_who(dialogueText:String, characterName:String):
 		GlobalSignals.main_objective_completed.emit()
 	elif characterName == "Locker" and notUsedLockerYet:
 		GlobalSignals.objective_completed.emit("Level3",4,100)
+		notUsedLockerYet = false;
 		
 func _level_complete():
 	GlobalSignals.objective_completed.emit("Level3",1,100)

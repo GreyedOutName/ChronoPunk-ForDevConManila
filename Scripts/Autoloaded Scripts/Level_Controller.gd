@@ -56,8 +56,11 @@ func _level_complete():
 	#code that unlocks the next level for level select
 	if (levelCurrentlyIn+1)<5:
 		levelScore[levelCurrentlyIn+1] = 0; #turns score from null into 0, making it "unlocked"
-		
+	
+	GlobalSignals.player_choosing_move.emit("Level Complete !")
 	SaveManager.save_game_data(levelScore)
+	await get_tree().create_timer(2.0).timeout
+	
 	get_tree().change_scene_to_file(levelSelect)
 	
 func _level_select(levelNum:int):
